@@ -1,0 +1,12 @@
+@import "breakpoints";
+
+@mixin respond-to($breakpoint){
+  @if map-has-key($ads-breakpoints, $breakpoint){
+    @media (min-width: map-get($ads-breakpoints, $breakpoint)){
+      @content;
+    }
+  }
+  @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}

@@ -1,0 +1,112 @@
+@import "../../../globals/variables";
+@import "../../../globals/mixins";
+.hero-container{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  &__face-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -9999;
+    transform: scale(1.4);
+  }
+
+  &__info {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to bottom, #00031c 5px, transparent 50%, #00031c 95%);
+    @include respond-to("small"){
+      position: relative;
+    }
+    &__container {
+      position: absolute;
+      padding: 0 2em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+    &__content {
+      padding: 1rem;
+      display: flex;
+      gap: 5px;
+      &__genre{
+        width: fit-content;
+        padding: 5px 6px;
+        font-size: 1rem;
+        background: rgba($ads-indigo, 0.2);
+        border-radius: 0.25rem;
+        border: 1.5px solid $ads-indigo;
+      }
+    }
+    &__list {
+      display: flex;
+      gap: 1rem;
+      width: fit-content;
+      padding: 0 1rem;
+    }
+    &__title {
+      width: fit-content;
+      font-size: 2.5rem;
+      margin: 1rem 0;
+      font-weight: 900;
+      transition: color 0.5s;
+      text-transform: uppercase;
+      &:hover{
+        color: $ads-indigo;
+      }
+    }
+    &__overview {
+      width: 50%;
+      font-size: 1rem;
+      margin: 1rem 0;
+      font-weight: 300;
+    }
+
+    &__btns{
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      &__item{
+        background: rgba(0, 0, 0, 0.5);
+        padding: 0.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.5s, transform 0.5s;
+        aspect-ratio: 1/1;
+        &:hover {
+          transform: translateY(-0.2rem);
+          background: rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
+  }
+}
+
+.cast-scroll{
+  &::-webkit-scrollbar {
+    width: 0;
+    height: .5em;
+    border-radius: 20px;
+    margin-top: 1em;
+    overflow: hidden;
+  }
+}

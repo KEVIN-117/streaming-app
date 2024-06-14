@@ -1,0 +1,14 @@
+<div #scrollContainer  class="relative h-screen flex flex-col gap-6 snap-y snap-mandatory overflow-y-scroll">
+  @for(prop of moviesData; track $index){
+    <app-hero
+      class="snap-center shrink-0"
+      [Props]="prop"
+    ></app-hero>
+  }
+</div>
+<div>
+  <h1>
+    <app-button [buttonProps]="{text: 'Load More', icon: '', variant: 'primary'}"></app-button>
+    <app-button [buttonProps]="{text: 'Load More', icon: '', variant: 'primary'}"></app-button>
+  </h1>
+</div>

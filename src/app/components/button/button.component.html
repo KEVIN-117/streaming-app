@@ -1,0 +1,20 @@
+@switch (buttonProps.type){
+  @case('primary'){
+    <button class="button button__primary">
+      {{buttonProps.text}}
+      <span [innerHtml]="buttonProps.icon | htmlTransform"></span>
+    </button>
+  }
+  @case('secondary'){
+    <button class="button button__secondary">
+      {{buttonProps.text}}
+      <span [innerHtml]="buttonProps.icon | htmlTransform"></span>
+    </button>
+  }
+  @default {
+    <button class="button button__default">
+      {{buttonProps.text}}
+      <span [innerHtml]="buttonProps.icon | htmlTransform"></span>
+    </button>
+  }
+}

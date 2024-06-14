@@ -1,0 +1,38 @@
+
+.container-casts{
+  &__info {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .container-casts__info {
+      content: '';
+      position: absolute;
+      z-index: 40;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(0, 0, 0);
+      transform: translateY(100%);
+      transition: transform 0.3s ease, background 0.3s ease 0.3s;
+    }
+    &__name {
+      padding: 0 20px;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to top, #00031c 5px, transparent 50%, #00031c 95%);
+    }
+    &___character {
+      z-index: 50;
+      padding: 0 20px;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to top, #00031c 5px, transparent 50%, #00031c 95%);
+    }
+  }
+}
+
+.container-casts:hover .container-casts__info {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-100%);
+}
