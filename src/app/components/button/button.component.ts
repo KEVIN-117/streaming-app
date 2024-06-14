@@ -1,19 +1,30 @@
 import {Component, Input} from '@angular/core';
-import { HtmlTransformPipe } from '@/core/pipes/html-transform.pipe'
-interface ButtonProps {
-  text: string;
-  type: 'primary' | 'secondary';
-  icon: string;
-}
+import {ButtonProps} from "./types";
+
+import { HtmlTransformPipe } from "@/app/core/pipes/html-transform.pipe"
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [HtmlTransformPipe],
+  imports: [
+    HtmlTransformPipe,
+    RouterLink
+  ],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })
 export class ButtonComponent {
   @Input() buttonProps!: ButtonProps;
+  @Input() path!: string;
+  @Input() onEvent!: any;
 
+  constructor() {
+  }
+
+  triggerEvent() {
+    if (this.onEvent) {
+      this.onEvent()
+    }
+  }
 }

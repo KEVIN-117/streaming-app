@@ -1,20 +1,32 @@
-@switch (buttonProps.type){
-  @case('primary'){
-    <button class="button button__primary">
+@switch (buttonProps.variant){
+  @case ('primary'){
+    <button class="bg-custom-gradient button button__primary">
       {{buttonProps.text}}
-      <span [innerHtml]="buttonProps.icon | htmlTransform"></span>
+      <span [innerHtml]="buttonProps.icon | htmlTransform" ></span>
     </button>
   }
-  @case('secondary'){
+  @case ('secondary'){
     <button class="button button__secondary">
-      {{buttonProps.text}}
-      <span [innerHtml]="buttonProps.icon | htmlTransform"></span>
+      <span>{{buttonProps.text}}</span>
+      <span [innerHtml]="buttonProps.icon | htmlTransform" ></span>
+    </button>
+  }
+  @case ('link'){
+    <a [routerLink]="path" class="button button__primary">
+      <span>{{buttonProps.text}}</span>
+      <span [innerHtml]="buttonProps.icon | htmlTransform" ></span>
+    </a>
+  }
+  @case ('event'){
+    <button (click)="triggerEvent()" class="bg-custom-gradient button button__primary">
+      <span>{{buttonProps.text}}</span>
+      <span [innerHtml]="buttonProps.icon | htmlTransform" ></span>
     </button>
   }
   @default {
-    <button class="button button__default">
-      {{buttonProps.text}}
-      <span [innerHtml]="buttonProps.icon | htmlTransform"></span>
+    <button class="button__default button">
+      <span>{{buttonProps.text}}</span>
+      <span [innerHtml]="buttonProps.icon | htmlTransform" ></span>
     </button>
   }
 }
