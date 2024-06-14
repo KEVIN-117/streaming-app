@@ -72,8 +72,7 @@ export class SideNavComponent {
 
   async logoutAction() {
     try {
-      await this._authService.logout();
-      await this.router.navigateByUrl('/auth/log-in')
+
     }catch (e) {
       if (e instanceof Error) {
         console.error(e.message)

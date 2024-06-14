@@ -58,17 +58,61 @@
             "standalone": true,
             "ngname": "htmlTransform",
             "sourceCode": "import {inject, Pipe, PipeTransform} from '@angular/core';\r\nimport {DomSanitizer, SafeHtml} from \"@angular/platform-browser\";\r\n\r\n@Pipe({\r\n  name: 'htmlTransform',\r\n  standalone: true\r\n})\r\nexport class HtmlTransformPipe implements PipeTransform {\r\n  private readonly domSanitizer: DomSanitizer = inject(DomSanitizer)\r\n  transform(value: string): SafeHtml {\r\n    return this.domSanitizer.bypassSecurityTrustHtml(value);\r\n  }\r\n}\r\n"
+        },
+        {
+            "name": "TimeFormatterPipe",
+            "id": "pipe-TimeFormatterPipe-46d1903ffcabe4f1b128e760422651311df4ada55b3bc21599cc076cc2c5578667dbd9d28ccbd9cdc2fdcbd04cbf8832524f5b3db5c82d1d48125a71784b312f",
+            "file": "src/app/core/pipes/time-formatter.pipe.ts",
+            "type": "pipe",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 9,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "standalone": true,
+            "ngname": "timeFormatter",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\r\n\r\n@Pipe({\r\n  name: 'timeFormatter',\r\n  standalone: true\r\n})\r\nexport class TimeFormatterPipe implements PipeTransform {\r\n\r\n  transform(value: number): string {\r\n    return `${value / 60}h ${value % 60}m`;\r\n  }\r\n\r\n}\r\n"
         }
     ],
     "interfaces": [
         {
             "name": "ButtonProps",
-            "id": "interface-ButtonProps-e728a11f4133a260e2325e81c25cc4aaeb0ead1513543078e643621e1e59b9b26512e27f135ab5f4535d788cc323d778c6b461dff195d0f2c11ba173d9545d16",
-            "file": "src/app/components/button/button.component.ts",
+            "id": "interface-ButtonProps-9bc89362980f41ff9a700a794a04252b0c31c80f60a5351315f42118f90ba4584cd4dbdc74d89a2a5f667294d4e2547928caec287fa617da6624c972c5a92350",
+            "file": "src/app/components/button/types.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {Component, Input} from '@angular/core';\r\nimport { HtmlTransformPipe } from '@/core/pipes/html-transform.pipe'\r\ninterface ButtonProps {\r\n  text: string;\r\n  type: 'primary' | 'secondary';\r\n  icon: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [HtmlTransformPipe],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  @Input() buttonProps!: ButtonProps;\r\n\r\n}\r\n",
+            "sourceCode": "interface ButtonProps {\r\n  text: string;\r\n  variant: 'primary' | 'secondary' | 'default' | 'link' | 'event';\r\n  icon: string;\r\n}\r\n\r\n\r\nexport type { ButtonProps };\r\n",
             "properties": [
                 {
                     "name": "icon",
@@ -77,7 +121,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 6
+                    "line": 4
                 },
                 {
                     "name": "text",
@@ -86,16 +130,16 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 4
+                    "line": 2
                 },
                 {
-                    "name": "type",
+                    "name": "variant",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "\"primary\" | \"secondary\"",
+                    "type": "\"primary\" | \"secondary\" | \"default\" | \"link\" | \"event\"",
                     "optional": false,
                     "description": "",
-                    "line": 5
+                    "line": 3
                 }
             ],
             "indexSignatures": [],
@@ -222,12 +266,12 @@
         },
         {
             "name": "FileUpload",
-            "id": "interface-FileUpload-163d02c802af7ac9001deb5d1cdba5b5f99fe9f31bf486b96f54ddadcff118ce8ec9e2aa8a9f7d659c1434fffb411186fba6284fa1959a3d988ae25c59579add",
+            "id": "interface-FileUpload-4656eaa8a719d77215af9a08cb3be2041e70b42e1fdd0853d7925ecdaf4cad7d2ad6a200df87ff75cf3cc1b5d7038ee99608b6a3b67a9a8930462a2f6b5eee26",
             "file": "src/app/pages/admin/storage/storage.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {FormControl, FormGroup, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport sweet from \"sweetalert2\"\r\nimport {StorageServiceService} from \"@app/core/services/storage/storage.service.service\";\r\nimport {NgClass} from \"@angular/common\";\r\n\r\n\r\ninterface FileUpload {\r\n  file: any;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-storage',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    RouterLink,\r\n    NgClass\r\n  ],\r\n  templateUrl: './storage.component.html',\r\n})\r\nexport default class StorageComponent {\r\n\r\n  private _storageService: StorageServiceService = inject(StorageServiceService)\r\n\r\n  protected formControl;\r\n\r\n  previewUrls: string[] = [];\r\n\r\n\r\n  files: FileList[] = []\r\n\r\n\r\n  constructor() {\r\n    this.formControl = new FormGroup<FileUpload>({\r\n      file: new FormControl(null, [\r\n        Validators.required\r\n      ])\r\n    })\r\n\r\n  }\r\n\r\n  onFileChange(event: Event): void {\r\n    const input = event.target as HTMLInputElement;\r\n    if (!input || !input.files) return;\r\n\r\n    const files = input.files;\r\n\r\n    for (let i = 0; i < files.length; i++) {\r\n      const file = files[i];\r\n      const url = URL.createObjectURL(file);\r\n      this.previewUrls.push(url);\r\n    }\r\n  }\r\n\r\n  async onSubmit(event: any) {\r\n    event.preventDefault()\r\n    const files = event.target.profile.files\r\n    for (let i = 0; i < files.length; i++) {\r\n      const file = files[i];\r\n      const res = await this._storageService.uploadFile(file, 'movies')\r\n\r\n      res.task.on('state_changed',\r\n        (snapshot)=>{\r\n            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;\r\n            sweet.fire({\r\n              position: 'top-end',\r\n              icon: 'info',\r\n              title: `Subiendo archivo ${file.name}`,\r\n              text: `Progreso: ${progress.toFixed(2)}%`,\r\n              showConfirmButton: false,\r\n              timer: 1500\r\n            })\r\n        },\r\n        (error)=>{\r\n            sweet.fire({\r\n              position: 'top-end',\r\n              icon: 'error',\r\n              title: 'Error al subir el archivo',\r\n              showConfirmButton: false,\r\n              timer: 1500\r\n            })\r\n        },\r\n        ()=>{\r\n            sweet.fire({\r\n              position: 'top-end',\r\n              icon: 'success',\r\n              title: 'Archivo subido con éxito',\r\n              showConfirmButton: false,\r\n              timer: 1500\r\n            })\r\n        }\r\n      )\r\n\r\n    }\r\n    this.previewUrls = []\r\n    this.formControl.reset()\r\n  }\r\n\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {FormControl, FormGroup, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport sweet from \"sweetalert2\"\r\nimport {StorageServiceService} from \"@app/core/services/storage/storage.service.service\";\r\nimport {NgClass} from \"@angular/common\";\r\n\r\n\r\ninterface FileUpload {\r\n  file: any;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-storage',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    RouterLink,\r\n    NgClass\r\n  ],\r\n  templateUrl: './storage.component.html',\r\n})\r\nexport default class StorageComponent {\r\n\r\n  private _storageService: StorageServiceService = inject(StorageServiceService)\r\n\r\n  protected formControl;\r\n\r\n  previewUrls: string[] = [];\r\n\r\n\r\n  files: FileList[] = []\r\n\r\n\r\n  constructor() {\r\n    this.formControl = new FormGroup<FileUpload>({\r\n      file: new FormControl(null, [\r\n        Validators.required\r\n      ])\r\n    })\r\n\r\n  }\r\n\r\n  onFileChange(event: Event): void {\r\n    const input = event.target as HTMLInputElement;\r\n    if (!input || !input.files) return;\r\n\r\n    const files = input.files;\r\n\r\n    for (let i = 0; i < files.length; i++) {\r\n      const file = files[i];\r\n      const url = URL.createObjectURL(file);\r\n      this.previewUrls.push(url);\r\n    }\r\n  }\r\n\r\n  async onSubmit(event: any) {\r\n    event.preventDefault()\r\n    const files = event.target.profile.files\r\n    for (let i = 0; i < files.length; i++) {\r\n      const file = files[i];\r\n    }\r\n    this.previewUrls = []\r\n    this.formControl.reset()\r\n  }\r\n\r\n\r\n}\r\n",
             "properties": [
                 {
                     "name": "file",
@@ -715,7 +759,7 @@
     "injectables": [
         {
             "name": "AuthServiceService",
-            "id": "injectable-AuthServiceService-dfddf91373de087f6fa2909d3cbb7f5035e6af64d20793b5e2296df1d7b4f239c327e0402be72adc744e8f46537eeffc4910929d5f6bb1d1b6088381f90d0050",
+            "id": "injectable-AuthServiceService-6e4f9cd5b47d2e8805b65c4b6ae1a2c8411a6bef20c6c4de50038bc1a038e9d6b9b5da8c769615c7f44cdb757ff7a2db601f28938051aa642b0a4bad01308d11",
             "file": "src/app/core/services/auth/auth.service.service.ts",
             "properties": [
                 {
@@ -742,7 +786,6 @@
                     "description": "",
                     "line": 9,
                     "modifierKind": [
-                        123,
                         148
                     ]
                 }
@@ -752,7 +795,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\nimport {Auth, authState} from \"@angular/fire/auth\";\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class AuthServiceService {\r\n  private readonly auth: Auth = inject(Auth)\r\n  private readonly authState = authState(this.auth)\r\n  constructor() { }\r\n\r\n}\r\n",
+            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\nimport {Auth, authState} from \"@angular/fire/auth\";\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class AuthServiceService {\r\n  private readonly auth: Auth = inject(Auth)\r\n  readonly authState = authState(this.auth)\r\n  constructor() { }\r\n\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -1341,7 +1384,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-e728a11f4133a260e2325e81c25cc4aaeb0ead1513543078e643621e1e59b9b26512e27f135ab5f4535d788cc323d778c6b461dff195d0f2c11ba173d9545d16-1",
+            "id": "component-ButtonComponent-8592d60f3df869e8b0c0ffa0cbc704c92699d7f156b363f0c98fd34d2f8fd444654a7c33c90c6c73d21705c6d41e641791ef452ff52648f8bd07f2b1546af11d-1",
             "file": "src/app/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1361,14 +1404,41 @@
                     "name": "buttonProps",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 18,
                     "type": "ButtonProps",
+                    "decorators": []
+                },
+                {
+                    "name": "onEvent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "path",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "triggerEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1378,25 +1448,36 @@
                 {
                     "name": "HtmlTransformPipe",
                     "type": "pipe"
+                },
+                {
+                    "name": "RouterLink"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, Input} from '@angular/core';\r\nimport { HtmlTransformPipe } from '@/core/pipes/html-transform.pipe'\r\ninterface ButtonProps {\r\n  text: string;\r\n  type: 'primary' | 'secondary';\r\n  icon: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [HtmlTransformPipe],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  @Input() buttonProps!: ButtonProps;\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, Input} from '@angular/core';\r\nimport {ButtonProps} from \"./types\";\r\n\r\nimport { HtmlTransformPipe } from \"@/app/core/pipes/html-transform.pipe\"\r\nimport {RouterLink} from \"@angular/router\";\r\n\r\n@Component({\r\n  selector: 'app-button',\r\n  standalone: true,\r\n  imports: [\r\n    HtmlTransformPipe,\r\n    RouterLink\r\n  ],\r\n  templateUrl: './button.component.html',\r\n  styleUrl: './button.component.scss'\r\n})\r\nexport class ButtonComponent {\r\n  @Input() buttonProps!: ButtonProps;\r\n  @Input() path!: string;\r\n  @Input() onEvent!: any;\r\n\r\n  constructor() {\r\n  }\r\n\r\n  triggerEvent() {\r\n    if (this.onEvent) {\r\n      this.onEvent()\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./button.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 20
+            },
             "extends": [],
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "ButtonComponent-1",
-            "templateData": "@switch (buttonProps.type){\r\n  @case('primary'){\r\n    <button class=\"button button__primary\">\r\n      {{buttonProps.text}}\r\n      <span [innerHtml]=\"buttonProps.icon | htmlTransform\"></span>\r\n    </button>\r\n  }\r\n  @case('secondary'){\r\n    <button class=\"button button__secondary\">\r\n      {{buttonProps.text}}\r\n      <span [innerHtml]=\"buttonProps.icon | htmlTransform\"></span>\r\n    </button>\r\n  }\r\n  @default {\r\n    <button class=\"button button__default\">\r\n      {{buttonProps.text}}\r\n      <span [innerHtml]=\"buttonProps.icon | htmlTransform\"></span>\r\n    </button>\r\n  }\r\n}\r\n"
+            "templateData": "@switch (buttonProps.variant){\r\n  @case ('primary'){\r\n    <button class=\"bg-custom-gradient button button__primary\">\r\n      {{buttonProps.text}}\r\n      <span [innerHtml]=\"buttonProps.icon | htmlTransform\" ></span>\r\n    </button>\r\n  }\r\n  @case ('secondary'){\r\n    <button class=\"button button__secondary\">\r\n      <span>{{buttonProps.text}}</span>\r\n      <span [innerHtml]=\"buttonProps.icon | htmlTransform\" ></span>\r\n    </button>\r\n  }\r\n  @case ('link'){\r\n    <a [routerLink]=\"path\" class=\"button button__primary\">\r\n      <span>{{buttonProps.text}}</span>\r\n      <span [innerHtml]=\"buttonProps.icon | htmlTransform\" ></span>\r\n    </a>\r\n  }\r\n  @case ('event'){\r\n    <button (click)=\"triggerEvent()\" class=\"bg-custom-gradient button button__primary\">\r\n      <span>{{buttonProps.text}}</span>\r\n      <span [innerHtml]=\"buttonProps.icon | htmlTransform\" ></span>\r\n    </button>\r\n  }\r\n  @default {\r\n    <button class=\"button__default button\">\r\n      <span>{{buttonProps.text}}</span>\r\n      <span [innerHtml]=\"buttonProps.icon | htmlTransform\" ></span>\r\n    </button>\r\n  }\r\n}\r\n"
         },
         {
             "name": "ButtonsComponent",
-            "id": "component-ButtonsComponent-e2210a6cc88c2426a9eb637b3576db9c666c3833b2532d85e8e5a9f1ee6f58d73534685eb1e1fa04d0d4da265dcad834adac821fffd6cf068e2f9b496caadd46",
+            "id": "component-ButtonsComponent-a4a946769176ee1be385a26acba44d72f16980df6c5333b36f4f23e853fefeab72dfd1be064eabdd1c8727fc3abd6dd834d5706308a625636ef3b45c02452b81",
             "file": "src/app/components/Auth/components/buttons/buttons.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1423,7 +1504,21 @@
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_authService",
+                    "defaultValue": "inject(AuthServiceService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AuthServiceService",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "action",
@@ -1496,7 +1591,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {RouterLink} from \"@angular/router\";\r\nimport {Component, Input} from '@angular/core';\r\n//import {AuthService} from \"../../../../core/services/auth.service\";\r\nimport {GithubAuthProvider} from \"@angular/fire/auth\";\r\n\r\n@Component({\r\n  selector: 'app-buttons',\r\n  standalone: true,\r\n  imports: [\r\n    RouterLink\r\n  ],\r\n  templateUrl: './buttons.component.html',\r\n  styleUrl: './buttons.component.scss'\r\n})\r\nexport class ButtonsComponent {\r\n\r\n  //private _authService: AuthService = inject(AuthService)\r\n\r\n\r\n  @Input() isLogin:boolean = false;\r\n\r\n  async action(provider: string){\r\n    if (provider === 'google'){\r\n      await this.loginWhitGoogle()\r\n    } else if (provider === 'github'){\r\n      await this.loginWhitGithub()\r\n    }\r\n  }\r\n\r\n  async loginWhitGoogle(){\r\n    try {\r\n      /*const  res = await this._authService.googleAuth()\r\n      await this._router.navigateByUrl('/dashboard')\r\n\r\n      console.log(res.user)\r\n      console.log(typeof res)*/\r\n    }catch (e){\r\n      console.error(e)\r\n    }\r\n  }\r\n\r\n  async loginWhitGithub(){\r\n    try {\r\n      /*const  res = await this._authService.githubAuth()\r\n      await this._router.navigateByUrl('/dashboard')\r\n      console.log(res.user)\r\n      console.log(typeof res)*/\r\n    }catch (e){\r\n      console.error(e)\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import {RouterLink} from \"@angular/router\";\r\nimport {Component, inject, Input} from '@angular/core';\r\nimport { AuthServiceService } from \"@app/core/services/auth/auth.service.service\";\r\nimport {GithubAuthProvider} from \"@angular/fire/auth\";\r\n\r\n@Component({\r\n  selector: 'app-buttons',\r\n  standalone: true,\r\n  imports: [\r\n    RouterLink\r\n  ],\r\n  templateUrl: './buttons.component.html',\r\n  styleUrl: './buttons.component.scss'\r\n})\r\nexport class ButtonsComponent {\r\n\r\n  private _authService: AuthServiceService = inject(AuthServiceService)\r\n\r\n\r\n  @Input() isLogin:boolean = false;\r\n\r\n  async action(provider: string){\r\n    if (provider === 'google'){\r\n      await this.loginWhitGoogle()\r\n    } else if (provider === 'github'){\r\n      await this.loginWhitGithub()\r\n    }\r\n  }\r\n\r\n  async loginWhitGoogle(){\r\n    try {\r\n      /*const  res = await this._authService.googleAuth()\r\n      await this._router.navigateByUrl('/dashboard')\r\n\r\n      console.log(res.user)\r\n      console.log(typeof res)*/\r\n    }catch (e){\r\n      console.error(e)\r\n    }\r\n  }\r\n\r\n  async loginWhitGithub(){\r\n    try {\r\n      /*const  res = await this._authService.githubAuth()\r\n      await this._router.navigateByUrl('/dashboard')\r\n      console.log(res.user)\r\n      console.log(typeof res)*/\r\n    }catch (e){\r\n      console.error(e)\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./buttons.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1656,7 +1751,7 @@
         },
         {
             "name": "ContainerComponent",
-            "id": "component-ContainerComponent-664f330242d210e9fb1899ee3dada7136888a7b7df9d85f48a30ae5f3f92464151a8d0a852d8bae0726f552447515f49d433fe991aa1b2c2b7650d779dbf8fb2",
+            "id": "component-ContainerComponent-d7a8463497255f5383d6383e4a45c2ef9d0021b314117c52a466994616ee495713af5abe49deb8377b344dae623b3a5de216b46810623ff673359a08edabec98",
             "file": "src/app/components/Auth/components/container/container.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1694,7 +1789,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, ContentChild, Input, TemplateRef} from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-container',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './container.component.html',\r\n  styleUrl: './container.component.scss'\r\n})\r\nexport class ContainerComponent {\r\n  @Input() hasContent = true;\r\n  constructor() {\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, Input} from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-container',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './container.component.html',\r\n  styleUrl: './container.component.scss'\r\n})\r\nexport class ContainerComponent {\r\n  @Input() hasContent = true;\r\n  constructor() {\r\n  }\r\n\r\n}\r\n",
             "styleUrl": "./container.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2055,7 +2150,7 @@
         },
         {
             "name": "LogInComponent",
-            "id": "component-LogInComponent-ca046c16a8528f56e093aa27426c20b1cccbdfa84e36001218661c3c6dc9f18d1352a050870b4d0bc869a507f98e72feb5d03b11b04d476f975cc240b24c9f6e",
+            "id": "component-LogInComponent-0d14395ac2deafa81aab4df187662aaf3771b0bec174ae6e02fd9a09a6a6e69818f6f50176b5bdc68f46534e54ec32c7c5af1d508d9bb3a918bf5f74ab44fb21",
             "file": "src/app/components/Auth/log-in/log-in.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2164,7 +2259,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {ButtonsComponent} from \"../components/buttons/buttons.component\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport {ContainerComponent} from \"../components/container/container.component\";\r\nimport { FormGroup, FormControl, Validators } from '@angular/forms'\r\nimport { ReactiveFormsModule } from \"@angular/forms\"\r\nimport {AuthServiceService} from \"../../../../../../angular-streaming/src/app/core/services/auth/auth.service.service\";\r\nimport {Credentials, UserDto} from \"../../../../../../angular-streaming/src/types\";\r\nimport Swal from \"sweetalert2\";\r\n\r\n@Component({\r\n  selector: 'app-log-in',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonsComponent,\r\n    RouterLink,\r\n    ContainerComponent,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './log-in.component.html',\r\n  styleUrl: './log-in.component.scss'\r\n})\r\nexport class LogInComponent {\r\n\r\n  private readonly auth = inject(AuthServiceService)\r\n  private readonly router = inject(Router)\r\n\r\n  protected formControl;\r\n  showPassword: boolean = false;\r\n  constructor() {\r\n    this.formControl = new FormGroup({\r\n      email: new FormControl('cademi4911@jadsys.com', [\r\n        Validators.required,\r\n        Validators.email\r\n      ]),\r\n      role: new FormControl<\"Admin\" | \"Client\">('Client', [\r\n        Validators.required,\r\n        Validators.pattern(/Admin|Client/)\r\n      ]),\r\n      password: new FormControl('n8pnU9xrVAjJz*', [\r\n        Validators.required,\r\n        Validators.minLength(8)\r\n      ])\r\n    })\r\n  }\r\n\r\n  async onSubmit() {\r\n    if (!this.formControl.valid) return\r\n    try {\r\n      const data = this.formControl.value\r\n      const formatData = {\r\n        email: data.email,\r\n        role: data.role,\r\n        password: data.password\r\n      } as Credentials\r\n      const {user} = await this.auth.login(formatData)\r\n      if (user) {\r\n        await Swal.fire({\r\n          icon: 'success',\r\n          title: `\r\n            <div>\r\n                <h2 class=\"text-2xl font-bold text-blue-900\">Inicio de sesión exitoso</h2>\r\n                <p class=\"text-sky-600\">\r\n                  Bienvenido ${user.email} a tu panel de control\r\n                </p>\r\n            </div>\r\n          `,\r\n          showConfirmButton: false,\r\n          timer: 2000,\r\n          background: '#1a202c',\r\n        })\r\n        this.formControl.reset()\r\n        await this.router.navigateByUrl('/dashboard')\r\n      }\r\n    }catch (e) {\r\n      if (e instanceof Error) {\r\n        console.error(e.message)\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {ButtonsComponent} from \"../components/buttons/buttons.component\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport {ContainerComponent} from \"../components/container/container.component\";\r\nimport { FormGroup, FormControl, Validators } from '@angular/forms'\r\nimport { ReactiveFormsModule } from \"@angular/forms\"\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\nimport {Credentials, UserDto} from \"@/types\";\r\nimport Swal from \"sweetalert2\";\r\n\r\n@Component({\r\n  selector: 'app-log-in',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonsComponent,\r\n    RouterLink,\r\n    ContainerComponent,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './log-in.component.html',\r\n  styleUrl: './log-in.component.scss'\r\n})\r\nexport class LogInComponent {\r\n\r\n  private readonly auth = inject(AuthServiceService)\r\n  private readonly router = inject(Router)\r\n\r\n  protected formControl;\r\n  showPassword: boolean = false;\r\n  constructor() {\r\n    this.formControl = new FormGroup({\r\n      email: new FormControl('cademi4911@jadsys.com', [\r\n        Validators.required,\r\n        Validators.email\r\n      ]),\r\n      role: new FormControl<\"Admin\" | \"Client\">('Client', [\r\n        Validators.required,\r\n        Validators.pattern(/Admin|Client/)\r\n      ]),\r\n      password: new FormControl('n8pnU9xrVAjJz*', [\r\n        Validators.required,\r\n        Validators.minLength(8)\r\n      ])\r\n    })\r\n  }\r\n\r\n  async onSubmit() {\r\n    if (!this.formControl.valid) return\r\n    try {\r\n\r\n    }catch (e) {\r\n      if (e instanceof Error) {\r\n        console.error(e.message)\r\n      }\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./log-in.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2182,84 +2277,7 @@
         },
         {
             "name": "MainComponent",
-            "id": "component-MainComponent-6878596a13c26c06f8f74a8dd2398d0827592c41661f07a8c3dfe795964bdb19f51072cf7208ef4683e5e580061b5d8fa2c8815ad1d46fc54f1948279276afdc",
-            "file": "src/app/pages/admin/main/main.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-main",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./main.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "auth",
-                    "defaultValue": "inject(AuthServiceService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
-                    "name": "db",
-                    "defaultValue": "inject(DatabaseServiceService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 13,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 16,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {DatabaseServiceService} from \"@app/core/services/database/database.service.service\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\n\r\n@Component({\r\n  selector: 'app-main',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './main.component.html',\r\n})\r\nexport class MainComponent {\r\n  private readonly auth = inject(AuthServiceService)\r\n  private readonly db = inject(DatabaseServiceService)\r\n\r\n\r\n  ngOnInit() {\r\n    this.auth.authState.subscribe(user =>{\r\n      if (user) {\r\n        /*const email = user.email as string\r\n        this.db.getUserByEmail(email).then(user => {\r\n          console.log(user)\r\n        })*/\r\n      }\r\n    })\r\n  }\r\n\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<div class=\"relative\">\r\n  <div class=\"absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n  <div class=\"mx-auto max-w-2xl py-32 sm:py-48 lg:py-56\">\r\n    <div class=\"hidden sm:mb-8 sm:flex sm:justify-center\">\r\n      <div class=\"relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-slate-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20\">\r\n        Announcing our next round of funding. <a href=\"#\" class=\"font-semibold text-indigo-600\"><span class=\"absolute inset-0\" aria-hidden=\"true\"></span>Read more <span aria-hidden=\"true\">&rarr;</span></a>\r\n      </div>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <h1 class=\"text-4xl font-bold tracking-tight text-gray-900 dark:text-slate-500 sm:text-6xl\">Data to enrich your online business</h1>\r\n      <p class=\"mt-6 text-lg leading-8 text-gray-600\">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>\r\n      <div class=\"mt-10 flex items-center justify-evenly gap-x-6\">\r\n        <a href=\"#\" class=\"rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600\">Get started</a>\r\n        <a href=\"#\" class=\"text-sm font-semibold leading-6 text-gray-900 dark:text-slate-500\">Learn more <span aria-hidden=\"true\">→</span></a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n\r\n</div>\r\n"
-        },
-        {
-            "name": "MainComponent",
-            "id": "component-MainComponent-a2a4fde701c4d46bf88ed75f9dca4bbea54bb33230fbd319e5377b91314c9f45848a88425a9e08598303e9be584a793b1ce2ba25f733510aecb19204494ed1c3-1",
+            "id": "component-MainComponent-a2a4fde701c4d46bf88ed75f9dca4bbea54bb33230fbd319e5377b91314c9f45848a88425a9e08598303e9be584a793b1ce2ba25f733510aecb19204494ed1c3",
             "file": "src/app/pages/client/main/main.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2414,10 +2432,87 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
+            "templateData": "<div #scrollContainer  class=\"relative h-screen flex flex-col gap-6 snap-y snap-mandatory overflow-y-scroll\">\r\n  @for(prop of moviesData; track $index){\r\n    <app-hero\r\n      class=\"snap-center shrink-0\"\r\n      [Props]=\"prop\"\r\n    ></app-hero>\r\n  }\r\n</div>\r\n<div>\r\n  <h1>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n  </h1>\r\n</div>\r\n"
+        },
+        {
+            "name": "MainComponent",
+            "id": "component-MainComponent-62b2da2d5d9ecc2d006b66495999b02768cbe7c946baaa73135e36af2afe84710e542720628c5127b0e8b473ae816282b01b58864d79e347cc917cd8598194b7-1",
+            "file": "src/app/pages/admin/main/main.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-main",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./main.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "authState",
+                    "defaultValue": "inject(AuthServiceService).authState",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "db",
+                    "defaultValue": "inject(DatabaseServiceService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {DatabaseServiceService} from \"@app/core/services/database/database.service.service\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\n\r\n@Component({\r\n  selector: 'app-main',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './main.component.html',\r\n})\r\nexport class MainComponent {\r\n  private readonly authState = inject(AuthServiceService).authState\r\n  private readonly db = inject(DatabaseServiceService)\r\n\r\n\r\n  ngOnInit() {\r\n    this.authState.subscribe(user =>{\r\n      if (user) {\r\n        /*const email = user.email as string\r\n        this.db.getUserByEmail(email).then(user => {\r\n          console.log(user)\r\n        })*/\r\n      }\r\n    })\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "MainComponent-1",
-            "templateData": "<div #scrollContainer  class=\"relative h-screen flex flex-col gap-6 snap-y snap-mandatory overflow-y-scroll\">\r\n  @for(prop of moviesData; track $index){\r\n    <app-hero\r\n      class=\"snap-center shrink-0\"\r\n      [Props]=\"prop\"\r\n    ></app-hero>\r\n  }\r\n</div>\r\n<div>\r\n  <h1>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n  </h1>\r\n</div>\r\n"
+            "templateData": "<div class=\"relative\">\r\n  <div class=\"absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n  <div class=\"mx-auto max-w-2xl py-32 sm:py-48 lg:py-56\">\r\n    <div class=\"hidden sm:mb-8 sm:flex sm:justify-center\">\r\n      <div class=\"relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-slate-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20\">\r\n        Announcing our next round of funding. <a href=\"#\" class=\"font-semibold text-indigo-600\"><span class=\"absolute inset-0\" aria-hidden=\"true\"></span>Read more <span aria-hidden=\"true\">&rarr;</span></a>\r\n      </div>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <h1 class=\"text-4xl font-bold tracking-tight text-gray-900 dark:text-slate-500 sm:text-6xl\">Data to enrich your online business</h1>\r\n      <p class=\"mt-6 text-lg leading-8 text-gray-600\">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>\r\n      <div class=\"mt-10 flex items-center justify-evenly gap-x-6\">\r\n        <a href=\"#\" class=\"rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600\">Get started</a>\r\n        <a href=\"#\" class=\"text-sm font-semibold leading-6 text-gray-900 dark:text-slate-500\">Learn more <span aria-hidden=\"true\">→</span></a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n\r\n</div>\r\n"
         },
         {
             "name": "NavBarComponent",
@@ -2646,7 +2741,7 @@
         },
         {
             "name": "NotFoundComponent",
-            "id": "component-NotFoundComponent-dda4ba29c4a926cfccc44c4fa3749f8e1bf35aefc4a9a22541cb20a565d6891404244ebfb448638b214e86163c42fac6491bb80442186a53640b48407fe54816",
+            "id": "component-NotFoundComponent-6b30c64ae890a01561ea095b70d0185ff1bb04830a68f70895162bf64de711903ed95c919172460e3dcfa90dbe144536acc6c39c00cfc71dcd19f897659c922a",
             "file": "src/app/components/not-found/not-found.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2697,7 +2792,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport {ContainerComponent} from \"../Auth/components/container/container.component\";\r\nimport {RouterLink} from \"@angular/router\";\r\nimport {ButtonComponent} from \"../../../../../angular-streaming/src/app/components/button/button.component\";\r\nimport {ButtonProps} from \"../../../../../angular-streaming/src/app/components/button/types\";\r\n\r\n@Component({\r\n  selector: 'app-not-found',\r\n  standalone: true,\r\n  imports: [\r\n    ContainerComponent,\r\n    RouterLink,\r\n    ButtonComponent\r\n  ],\r\n  templateUrl: './not-found.component.html',\r\n  styleUrl: './not-found.component.scss'\r\n})\r\nexport class NotFoundComponent {\r\n  buttonProps: ButtonProps = {\r\n    text: \"Volver al inicio\",\r\n    variant: \"link\",\r\n    icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n  <path fill-rule=\"evenodd\" d=\"M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z\" clip-rule=\"evenodd\"/>\r\n</svg>\r\n`\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport {ContainerComponent} from \"../Auth/components/container/container.component\";\r\nimport {RouterLink} from \"@angular/router\";\r\nimport {ButtonComponent} from \"@app/components/button/button.component\";\r\nimport {ButtonProps} from \"@app/components/button/types\";\r\n\r\n@Component({\r\n  selector: 'app-not-found',\r\n  standalone: true,\r\n  imports: [\r\n    ContainerComponent,\r\n    RouterLink,\r\n    ButtonComponent\r\n  ],\r\n  templateUrl: './not-found.component.html',\r\n  styleUrl: './not-found.component.scss'\r\n})\r\nexport class NotFoundComponent {\r\n  buttonProps: ButtonProps = {\r\n    text: \"Volver al inicio\",\r\n    variant: \"link\",\r\n    icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n  <path fill-rule=\"evenodd\" d=\"M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z\" clip-rule=\"evenodd\"/>\r\n</svg>\r\n`\r\n  }\r\n}\r\n",
             "styleUrl": "./not-found.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2707,7 +2802,7 @@
         },
         {
             "name": "NotificationComponent",
-            "id": "component-NotificationComponent-d6a4c633100f0a850fc44917957808f56e7d588926a47626b42a0cbe4be08f39188809478ae4cedec61cd651e6bb8076626ac74683053cda3edde6f5788170e8",
+            "id": "component-NotificationComponent-8f9721f9dba29ad60db960d61c95bd81c040a0646a581e736340b4a1871713d35cf708860d8db13b6bea11512e14a9c30ce96a92989b4d427a4c705e4da694c4",
             "file": "src/app/components/notification/notification.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2728,7 +2823,7 @@
                     "defaultValue": "'#1a202c'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 },
@@ -2737,7 +2832,7 @@
                     "defaultValue": "'This is a message'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "string",
                     "decorators": []
                 },
@@ -2746,7 +2841,7 @@
                     "defaultValue": "'This is a message'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "string",
                     "decorators": []
                 },
@@ -2755,7 +2850,7 @@
                     "defaultValue": "'Title'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "string",
                     "decorators": []
                 },
@@ -2764,7 +2859,7 @@
                     "defaultValue": "'error'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "\"error\" | \"success\" | \"info\" | \"question\"",
                     "decorators": []
                 }
@@ -2779,7 +2874,7 @@
                     "type": "ButtonProps",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 22
                 }
             ],
             "methodsClass": [
@@ -2789,7 +2884,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2811,7 +2906,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, Input} from '@angular/core';\r\nimport { inject } from '@angular/core';\r\nimport swalt from \"sweetalert2\";\r\nimport {ButtonComponent} from \"../../../../../angular-streaming/src/app/components/button/button.component\";\r\nimport {ButtonProps} from \"../../../../../angular-streaming/src/app/components/button/types\";\r\n@Component({\r\n  selector: 'app-notification',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonComponent\r\n  ],\r\n  templateUrl: './notification.component.html',\r\n  styleUrl: './notification.component.scss'\r\n})\r\nexport class NotificationComponent {\r\n\r\n  @Input() type: 'error' | 'success' | 'info' | 'question' = 'error';\r\n  @Input() message: string = 'This is a message';\r\n  @Input() title: string = 'Title';\r\n  @Input() background: string = '#1a202c';\r\n  @Input() text: string = 'This is a message';\r\n\r\n  button: ButtonProps = {\r\n    text: \"Get Notification\",\r\n    variant: \"event\",\r\n    icon: `<svg class=\"w-6 h-6 text-inherit\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n        <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.193-.538 1.193H5.538c-.538 0-.538-.6-.538-1.193 0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365Zm-8.134 5.368a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M8.54 17.901a3.48 3.48 0 0 0 6.92 0H8.54Z\"/>\r\n      </svg>\r\n    `,\r\n  }\r\n\r\n  async getNotification() {\r\n    await swalt.fire({\r\n      icon: this.type,\r\n      title: this.title,\r\n      text: this.text,\r\n      showConfirmButton: false,\r\n      timer: 1500\r\n    })\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component, Input} from '@angular/core';\r\nimport swalt from \"sweetalert2\";\r\nimport {ButtonComponent} from \"@app/components/button/button.component\";\r\nimport {ButtonProps} from \"@app/components/button/types\";\r\n@Component({\r\n  selector: 'app-notification',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonComponent\r\n  ],\r\n  templateUrl: './notification.component.html',\r\n  styleUrl: './notification.component.scss'\r\n})\r\nexport class NotificationComponent {\r\n\r\n  @Input() type: 'error' | 'success' | 'info' | 'question' = 'error';\r\n  @Input() message: string = 'This is a message';\r\n  @Input() title: string = 'Title';\r\n  @Input() background: string = '#1a202c';\r\n  @Input() text: string = 'This is a message';\r\n\r\n  button: ButtonProps = {\r\n    text: \"Get Notification\",\r\n    variant: \"event\",\r\n    icon: `<svg class=\"w-6 h-6 text-inherit\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n        <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 5.365V3m0 2.365a5.338 5.338 0 0 1 5.133 5.368v1.8c0 2.386 1.867 2.982 1.867 4.175 0 .593 0 1.193-.538 1.193H5.538c-.538 0-.538-.6-.538-1.193 0-1.193 1.867-1.789 1.867-4.175v-1.8A5.338 5.338 0 0 1 12 5.365Zm-8.134 5.368a8.458 8.458 0 0 1 2.252-5.714m14.016 5.714a8.458 8.458 0 0 0-2.252-5.714M8.54 17.901a3.48 3.48 0 0 0 6.92 0H8.54Z\"/>\r\n      </svg>\r\n    `,\r\n  }\r\n\r\n  async getNotification() {\r\n    await swalt.fire({\r\n      icon: this.type,\r\n      title: this.title,\r\n      text: this.text,\r\n      showConfirmButton: false,\r\n      timer: 1500\r\n    })\r\n  }\r\n}\r\n",
             "styleUrl": "./notification.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2914,7 +3009,45 @@
         },
         {
             "name": "ProfileComponent",
-            "id": "component-ProfileComponent-9b4b892b8f19870c5742532df240e6fbc4908a964df7d7ff276344e2b575e2b3c52777679f6d7d7129cb28682e8a8d7b6891264d38de0e51294b5b1d4cf0252d",
+            "id": "component-ProfileComponent-a97249ba5e5c3bb4a8c44264a928e23d63a6aa67c7adf52f7420157aff9fb5bcd3f3bced05a28cc454120fc85ee8b54060f753c396a535ab33dcd13d548690b0",
+            "file": "src/app/pages/components/profile/profile.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-profile",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./profile.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-profile',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './profile.component.html',\r\n  styleUrl: './profile.component.scss'\r\n})\r\nexport class ProfileComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./profile.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>profile works!</p>\r\n"
+        },
+        {
+            "name": "ProfileComponent",
+            "id": "component-ProfileComponent-9b4b892b8f19870c5742532df240e6fbc4908a964df7d7ff276344e2b575e2b3c52777679f6d7d7129cb28682e8a8d7b6891264d38de0e51294b5b1d4cf0252d-1",
             "file": "src/app/pages/admin/profile/profile.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2985,52 +3118,14 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"grid grid-cols-1 gap-10\">\r\n  <div class=\"xl:w-[20%] md:w-[50%] sm:w-[70%] w-full mx-auto flex justify-center items-center relative\">\r\n    <img class=\"w-full h-auto border-l-8 border-r-8 border-indigo-700 rounded-full shadow-2xl shadow-blue-700\" [src]=\"userInstance?.getPhotoURL\" [alt]=\"userInstance?.getDisplayName\">\r\n    <div class=\"rounded-full absolute right-0 bottom-0 bg-slate-800/65 flex justify-center items-center border-2 border-indigo-700\">\r\n      @switch (userInstance?.getProviderId){\r\n        @case('google.com'){\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 64 64\" width=\"100\" height=\"100\">\r\n            <linearGradient id=\"Pl9x765sEya2T~V8LKMRTa_48166_gr1\" x1=\"32\" x2=\"32\" y1=\"4.75\" y2=\"60.568\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#Pl9x765sEya2T~V8LKMRTa_48166_gr1)\" d=\"M32.51,58c-10.073,0-19.149-5.485-23.687-14.315C6.976,40.075,6,36.035,6,32 s0.976-8.075,2.823-11.684C13.361,11.485,22.437,6,32.51,6c6.756,0,12.891,2.342,17.743,6.772l0.781,0.713l-8.756,8.58l-0.699-0.655 c-2.423-2.27-5.559-3.469-9.068-3.469c-6.017,0-11.373,3.868-13.328,9.626c-0.496,1.457-0.747,2.945-0.747,4.425 c0,1.477,0.251,2.964,0.747,4.42c1.952,5.75,7.308,9.613,13.328,9.613c3.048,0,5.845-0.779,8.09-2.253 c2.058-1.351,3.6-3.412,4.352-5.772H31V26h26.396l0.128,0.851C57.81,28.74,58,30.397,58,32.341c0,7.856-2.818,14.727-7.937,19.345 C45.498,55.816,39.428,58,32.51,58z M32.51,8c-9.32,0-17.715,5.069-21.907,13.229C8.876,24.604,8,28.228,8,32 s0.876,7.396,2.604,10.771C14.795,50.931,23.19,56,32.51,56c6.414,0,12.02-2.005,16.212-5.798C53.416,45.967,56,39.624,56,32.341 c0-1.527-0.127-2.88-0.329-4.341H33v8h14.456l-0.235,1.193c-0.666,3.377-2.678,6.384-5.522,8.251 c-2.571,1.688-5.748,2.581-9.188,2.581c-6.876,0-12.994-4.408-15.221-10.97c-0.566-1.663-0.853-3.367-0.853-5.063 c0-1.699,0.287-3.404,0.853-5.068c2.23-6.568,8.347-10.982,15.221-10.982c3.689,0,7.027,1.164,9.714,3.376l5.883-5.765 C43.763,9.916,38.394,8,32.51,8z\"></path><linearGradient id=\"Pl9x765sEya2T~V8LKMRTb_48166_gr2\" x1=\"32\" x2=\"32\" y1=\"10.75\" y2=\"55.408\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Pl9x765sEya2T~V8LKMRTb_48166_gr2)\" d=\"M32,53c-11.58,0-21-9.421-21-21s9.42-21,21-21c3.924,0,7.75,1.089,11.067,3.149l-1.056,1.699 C39.012,13.985,35.55,13,32,13c-10.477,0-19,8.523-19,19s8.523,19,19,19c10.141,0,18.452-7.986,18.974-18H36v-2h17v1 C53,43.579,43.58,53,32,53z\"></path>\r\n          </svg>\r\n        }\r\n        @case('github.com'){\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewBox=\"0 0 64 64\">\r\n            <linearGradient id=\"KpzH_ttTMIjq8dhx1zD2pa_52539_gr1\" x1=\"30.999\" x2=\"30.999\" y1=\"16\" y2=\"55.342\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#KpzH_ttTMIjq8dhx1zD2pa_52539_gr1)\" d=\"M25.008,56.007c-0.003-0.368-0.006-1.962-0.009-3.454l-0.003-1.55 c-6.729,0.915-8.358-3.78-8.376-3.83c-0.934-2.368-2.211-3.045-2.266-3.073l-0.124-0.072c-0.463-0.316-1.691-1.157-1.342-2.263 c0.315-0.997,1.536-1.1,2.091-1.082c3.074,0.215,4.63,2.978,4.694,3.095c1.569,2.689,3.964,2.411,5.509,1.844 c0.144-0.688,0.367-1.32,0.659-1.878C20.885,42.865,15.27,40.229,15.27,30.64c0-2.633,0.82-4.96,2.441-6.929 c-0.362-1.206-0.774-3.666,0.446-6.765l0.174-0.442l0.452-0.144c0.416-0.137,2.688-0.624,7.359,2.433 c1.928-0.494,3.969-0.749,6.074-0.759c2.115,0.01,4.158,0.265,6.09,0.759c4.667-3.058,6.934-2.565,7.351-2.433l0.451,0.145 l0.174,0.44c1.225,3.098,0.813,5.559,0.451,6.766c1.618,1.963,2.438,4.291,2.438,6.929c0,9.591-5.621,12.219-10.588,13.087 c0.563,1.065,0.868,2.402,0.868,3.878c0,1.683-0.007,7.204-0.015,8.402l-2-0.014c0.008-1.196,0.015-6.708,0.015-8.389 c0-2.442-0.943-3.522-1.35-3.874l-1.73-1.497l2.274-0.253c5.205-0.578,10.525-2.379,10.525-11.341c0-2.33-0.777-4.361-2.31-6.036 l-0.43-0.469l0.242-0.587c0.166-0.401,0.894-2.442-0.043-5.291c-0.758,0.045-2.568,0.402-5.584,2.447l-0.384,0.259l-0.445-0.123 c-1.863-0.518-3.938-0.796-6.001-0.806c-2.052,0.01-4.124,0.288-5.984,0.806l-0.445,0.123l-0.383-0.259 c-3.019-2.044-4.833-2.404-5.594-2.449c-0.935,2.851-0.206,4.892-0.04,5.293l0.242,0.587l-0.429,0.469 c-1.536,1.681-2.314,3.712-2.314,6.036c0,8.958,5.31,10.77,10.504,11.361l2.252,0.256l-1.708,1.49 c-0.372,0.325-1.03,1.112-1.254,2.727l-0.075,0.549l-0.506,0.227c-1.321,0.592-5.839,2.162-8.548-2.485 c-0.015-0.025-0.544-0.945-1.502-1.557c0.646,0.639,1.433,1.673,2.068,3.287c0.066,0.19,1.357,3.622,7.28,2.339l1.206-0.262 l0.012,3.978c0.003,1.487,0.006,3.076,0.009,3.444L25.008,56.007z\"></path><linearGradient id=\"KpzH_ttTMIjq8dhx1zD2pb_52539_gr2\" x1=\"32\" x2=\"32\" y1=\"5\" y2=\"59.167\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#KpzH_ttTMIjq8dhx1zD2pb_52539_gr2)\" d=\"M32,58C17.663,58,6,46.337,6,32S17.663,6,32,6s26,11.663,26,26S46.337,58,32,58z M32,8 C18.767,8,8,18.767,8,32s10.767,24,24,24s24-10.767,24-24S45.233,8,32,8z\"></path>\r\n          </svg>\r\n        }\r\n        @default {\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewBox=\"0 0 64 64\">\r\n            <linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5a_44033_gr1\" x1=\"36\" x2=\"36\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5a_44033_gr1)\" d=\"M36 40A2 2 0 1 0 36 44A2 2 0 1 0 36 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5b_44033_gr2\" x1=\"42\" x2=\"42\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5b_44033_gr2)\" d=\"M42 40A2 2 0 1 0 42 44A2 2 0 1 0 42 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5c_44033_gr3\" x1=\"48\" x2=\"48\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5c_44033_gr3)\" d=\"M48 40A2 2 0 1 0 48 44A2 2 0 1 0 48 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5d_44033_gr4\" x1=\"30\" x2=\"30\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5d_44033_gr4)\" d=\"M30 40A2 2 0 1 0 30 44A2 2 0 1 0 30 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5e_44033_gr5\" x1=\"32\" x2=\"32\" y1=\"5.333\" y2=\"58.804\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5e_44033_gr5)\" d=\"M52.021,34H47v-3c0-2.757-2.243-5-5-5h-1v-2c0-1.103-0.897-2-2-2h-2v-7c0-4.963-4.037-9-9-9 s-9,4.037-9,9v7h-2c-1.103,0-2,0.897-2,2v2h-1c-2.757,0-5,2.243-5,5v22c0,2.757,2.243,5,5,5h28c2.757,0,5-2.243,5-5v-3h5.021 C53.663,50,55,48.663,55,47.021V36.979C55,35.337,53.663,34,52.021,34z M39,26h-6v-2h6V26z M21,15c0-3.859,3.141-7,7-7s7,3.141,7,7 v7h-2c-1.103,0-2,0.897-2,2v2h-6v-2c0-1.103-0.897-2-2-2h-2V15z M17,24h6v2h-6V24z M45,53c0,1.654-1.346,3-3,3h-7 c0-1.103-0.897-2-2-2H23c-1.103,0-2,0.897-2,2h-7c-1.654,0-3-1.346-3-3v-4h4v-2h-4v-2h4v-2h-4v-2h4v-2h-4v-2h4v-2h-4v-4 c0-1.654,1.346-3,3-3h28c1.654,0,3,1.346,3,3v3H25.979C24.337,34,23,35.337,23,36.979v10.041C23,48.663,24.337,50,25.979,50H45V53z M53,47.021C53,47.561,52.561,48,52.021,48H25.979C25.439,48,25,47.561,25,47.021V36.979C25,36.439,25.439,36,25.979,36h26.041 C52.561,36,53,36.439,53,36.979V47.021z\"></path>\r\n          </svg>\r\n        }\r\n      }\r\n    </div>\r\n  </div>\r\n  <div class=\"xl:w-[40%] md:w-[60%] sm:w-[80%] w-full mx-auto divide-y flex flex-col border border-indigo-700 rounded-xl shadow-2xl shadow-blue-700 text-slate-600 divide-slate-600\">\r\n    <div class=\"py-5 px-5 w-full flex sm:flex-row flex-col justify-between\">\r\n      <h3>Name</h3>\r\n      <p>{{userInstance?.getDisplayName}}</p>\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Email</h3>\r\n      <div class=\"flex items-center\">\r\n        <p>{{userInstance?.getEmail}}</p>\r\n        @if (userInstance?.getEmailVerified){\r\n          <svg class=\"text-green-700\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n            <path fill-rule=\"evenodd\" d=\"M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z\" clip-rule=\"evenodd\"/>\r\n          </svg>\r\n        } @else {\r\n          <svg class=\"text-red-700\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n            <path fill-rule=\"evenodd\" d=\"M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z\" clip-rule=\"evenodd\"/>\r\n          </svg>\r\n        }\r\n      </div>\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Phone</h3>\r\n      @if (userInstance?.getPhoneNumber){\r\n        <p>{{userInstance?.getPhoneNumber}}</p>\r\n      } @else {\r\n        <p>Not available</p>\r\n      }\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Provider</h3>\r\n      <p>{{userInstance?.getProviderId}}</p>\r\n    </div>\r\n\r\n  </div>\r\n</div>\r\n"
-        },
-        {
-            "name": "ProfileComponent",
-            "id": "component-ProfileComponent-a97249ba5e5c3bb4a8c44264a928e23d63a6aa67c7adf52f7420157aff9fb5bcd3f3bced05a28cc454120fc85ee8b54060f753c396a535ab33dcd13d548690b0-1",
-            "file": "src/app/pages/components/profile/profile.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-profile",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./profile.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-profile',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './profile.component.html',\r\n  styleUrl: './profile.component.scss'\r\n})\r\nexport class ProfileComponent {\r\n\r\n}\r\n",
-            "styleUrl": "./profile.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "ProfileComponent-1",
-            "templateData": "<p>profile works!</p>\r\n"
+            "templateData": "<div class=\"grid grid-cols-1 gap-10\">\r\n  <div class=\"xl:w-[20%] md:w-[50%] sm:w-[70%] w-full mx-auto flex justify-center items-center relative\">\r\n    <img class=\"w-full h-auto border-l-8 border-r-8 border-indigo-700 rounded-full shadow-2xl shadow-blue-700\" [src]=\"userInstance?.getPhotoURL\" [alt]=\"userInstance?.getDisplayName\">\r\n    <div class=\"rounded-full absolute right-0 bottom-0 bg-slate-800/65 flex justify-center items-center border-2 border-indigo-700\">\r\n      @switch (userInstance?.getProviderId){\r\n        @case('google.com'){\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 64 64\" width=\"100\" height=\"100\">\r\n            <linearGradient id=\"Pl9x765sEya2T~V8LKMRTa_48166_gr1\" x1=\"32\" x2=\"32\" y1=\"4.75\" y2=\"60.568\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#Pl9x765sEya2T~V8LKMRTa_48166_gr1)\" d=\"M32.51,58c-10.073,0-19.149-5.485-23.687-14.315C6.976,40.075,6,36.035,6,32 s0.976-8.075,2.823-11.684C13.361,11.485,22.437,6,32.51,6c6.756,0,12.891,2.342,17.743,6.772l0.781,0.713l-8.756,8.58l-0.699-0.655 c-2.423-2.27-5.559-3.469-9.068-3.469c-6.017,0-11.373,3.868-13.328,9.626c-0.496,1.457-0.747,2.945-0.747,4.425 c0,1.477,0.251,2.964,0.747,4.42c1.952,5.75,7.308,9.613,13.328,9.613c3.048,0,5.845-0.779,8.09-2.253 c2.058-1.351,3.6-3.412,4.352-5.772H31V26h26.396l0.128,0.851C57.81,28.74,58,30.397,58,32.341c0,7.856-2.818,14.727-7.937,19.345 C45.498,55.816,39.428,58,32.51,58z M32.51,8c-9.32,0-17.715,5.069-21.907,13.229C8.876,24.604,8,28.228,8,32 s0.876,7.396,2.604,10.771C14.795,50.931,23.19,56,32.51,56c6.414,0,12.02-2.005,16.212-5.798C53.416,45.967,56,39.624,56,32.341 c0-1.527-0.127-2.88-0.329-4.341H33v8h14.456l-0.235,1.193c-0.666,3.377-2.678,6.384-5.522,8.251 c-2.571,1.688-5.748,2.581-9.188,2.581c-6.876,0-12.994-4.408-15.221-10.97c-0.566-1.663-0.853-3.367-0.853-5.063 c0-1.699,0.287-3.404,0.853-5.068c2.23-6.568,8.347-10.982,15.221-10.982c3.689,0,7.027,1.164,9.714,3.376l5.883-5.765 C43.763,9.916,38.394,8,32.51,8z\"></path><linearGradient id=\"Pl9x765sEya2T~V8LKMRTb_48166_gr2\" x1=\"32\" x2=\"32\" y1=\"10.75\" y2=\"55.408\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Pl9x765sEya2T~V8LKMRTb_48166_gr2)\" d=\"M32,53c-11.58,0-21-9.421-21-21s9.42-21,21-21c3.924,0,7.75,1.089,11.067,3.149l-1.056,1.699 C39.012,13.985,35.55,13,32,13c-10.477,0-19,8.523-19,19s8.523,19,19,19c10.141,0,18.452-7.986,18.974-18H36v-2h17v1 C53,43.579,43.58,53,32,53z\"></path>\r\n          </svg>\r\n        }\r\n        @case('github.com'){\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewBox=\"0 0 64 64\">\r\n            <linearGradient id=\"KpzH_ttTMIjq8dhx1zD2pa_52539_gr1\" x1=\"30.999\" x2=\"30.999\" y1=\"16\" y2=\"55.342\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#KpzH_ttTMIjq8dhx1zD2pa_52539_gr1)\" d=\"M25.008,56.007c-0.003-0.368-0.006-1.962-0.009-3.454l-0.003-1.55 c-6.729,0.915-8.358-3.78-8.376-3.83c-0.934-2.368-2.211-3.045-2.266-3.073l-0.124-0.072c-0.463-0.316-1.691-1.157-1.342-2.263 c0.315-0.997,1.536-1.1,2.091-1.082c3.074,0.215,4.63,2.978,4.694,3.095c1.569,2.689,3.964,2.411,5.509,1.844 c0.144-0.688,0.367-1.32,0.659-1.878C20.885,42.865,15.27,40.229,15.27,30.64c0-2.633,0.82-4.96,2.441-6.929 c-0.362-1.206-0.774-3.666,0.446-6.765l0.174-0.442l0.452-0.144c0.416-0.137,2.688-0.624,7.359,2.433 c1.928-0.494,3.969-0.749,6.074-0.759c2.115,0.01,4.158,0.265,6.09,0.759c4.667-3.058,6.934-2.565,7.351-2.433l0.451,0.145 l0.174,0.44c1.225,3.098,0.813,5.559,0.451,6.766c1.618,1.963,2.438,4.291,2.438,6.929c0,9.591-5.621,12.219-10.588,13.087 c0.563,1.065,0.868,2.402,0.868,3.878c0,1.683-0.007,7.204-0.015,8.402l-2-0.014c0.008-1.196,0.015-6.708,0.015-8.389 c0-2.442-0.943-3.522-1.35-3.874l-1.73-1.497l2.274-0.253c5.205-0.578,10.525-2.379,10.525-11.341c0-2.33-0.777-4.361-2.31-6.036 l-0.43-0.469l0.242-0.587c0.166-0.401,0.894-2.442-0.043-5.291c-0.758,0.045-2.568,0.402-5.584,2.447l-0.384,0.259l-0.445-0.123 c-1.863-0.518-3.938-0.796-6.001-0.806c-2.052,0.01-4.124,0.288-5.984,0.806l-0.445,0.123l-0.383-0.259 c-3.019-2.044-4.833-2.404-5.594-2.449c-0.935,2.851-0.206,4.892-0.04,5.293l0.242,0.587l-0.429,0.469 c-1.536,1.681-2.314,3.712-2.314,6.036c0,8.958,5.31,10.77,10.504,11.361l2.252,0.256l-1.708,1.49 c-0.372,0.325-1.03,1.112-1.254,2.727l-0.075,0.549l-0.506,0.227c-1.321,0.592-5.839,2.162-8.548-2.485 c-0.015-0.025-0.544-0.945-1.502-1.557c0.646,0.639,1.433,1.673,2.068,3.287c0.066,0.19,1.357,3.622,7.28,2.339l1.206-0.262 l0.012,3.978c0.003,1.487,0.006,3.076,0.009,3.444L25.008,56.007z\"></path><linearGradient id=\"KpzH_ttTMIjq8dhx1zD2pb_52539_gr2\" x1=\"32\" x2=\"32\" y1=\"5\" y2=\"59.167\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#KpzH_ttTMIjq8dhx1zD2pb_52539_gr2)\" d=\"M32,58C17.663,58,6,46.337,6,32S17.663,6,32,6s26,11.663,26,26S46.337,58,32,58z M32,8 C18.767,8,8,18.767,8,32s10.767,24,24,24s24-10.767,24-24S45.233,8,32,8z\"></path>\r\n          </svg>\r\n        }\r\n        @default {\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewBox=\"0 0 64 64\">\r\n            <linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5a_44033_gr1\" x1=\"36\" x2=\"36\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5a_44033_gr1)\" d=\"M36 40A2 2 0 1 0 36 44A2 2 0 1 0 36 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5b_44033_gr2\" x1=\"42\" x2=\"42\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5b_44033_gr2)\" d=\"M42 40A2 2 0 1 0 42 44A2 2 0 1 0 42 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5c_44033_gr3\" x1=\"48\" x2=\"48\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5c_44033_gr3)\" d=\"M48 40A2 2 0 1 0 48 44A2 2 0 1 0 48 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5d_44033_gr4\" x1=\"30\" x2=\"30\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5d_44033_gr4)\" d=\"M30 40A2 2 0 1 0 30 44A2 2 0 1 0 30 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5e_44033_gr5\" x1=\"32\" x2=\"32\" y1=\"5.333\" y2=\"58.804\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5e_44033_gr5)\" d=\"M52.021,34H47v-3c0-2.757-2.243-5-5-5h-1v-2c0-1.103-0.897-2-2-2h-2v-7c0-4.963-4.037-9-9-9 s-9,4.037-9,9v7h-2c-1.103,0-2,0.897-2,2v2h-1c-2.757,0-5,2.243-5,5v22c0,2.757,2.243,5,5,5h28c2.757,0,5-2.243,5-5v-3h5.021 C53.663,50,55,48.663,55,47.021V36.979C55,35.337,53.663,34,52.021,34z M39,26h-6v-2h6V26z M21,15c0-3.859,3.141-7,7-7s7,3.141,7,7 v7h-2c-1.103,0-2,0.897-2,2v2h-6v-2c0-1.103-0.897-2-2-2h-2V15z M17,24h6v2h-6V24z M45,53c0,1.654-1.346,3-3,3h-7 c0-1.103-0.897-2-2-2H23c-1.103,0-2,0.897-2,2h-7c-1.654,0-3-1.346-3-3v-4h4v-2h-4v-2h4v-2h-4v-2h4v-2h-4v-2h4v-2h-4v-4 c0-1.654,1.346-3,3-3h28c1.654,0,3,1.346,3,3v3H25.979C24.337,34,23,35.337,23,36.979v10.041C23,48.663,24.337,50,25.979,50H45V53z M53,47.021C53,47.561,52.561,48,52.021,48H25.979C25.439,48,25,47.561,25,47.021V36.979C25,36.439,25.439,36,25.979,36h26.041 C52.561,36,53,36.439,53,36.979V47.021z\"></path>\r\n          </svg>\r\n        }\r\n      }\r\n    </div>\r\n  </div>\r\n  <div class=\"xl:w-[40%] md:w-[60%] sm:w-[80%] w-full mx-auto divide-y flex flex-col border border-indigo-700 rounded-xl shadow-2xl shadow-blue-700 text-slate-600 divide-slate-600\">\r\n    <div class=\"py-5 px-5 w-full flex sm:flex-row flex-col justify-between\">\r\n      <h3>Name</h3>\r\n      <p>{{userInstance?.getDisplayName}}</p>\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Email</h3>\r\n      <div class=\"flex items-center\">\r\n        <p>{{userInstance?.getEmail}}</p>\r\n        @if (userInstance?.getEmailVerified){\r\n          <svg class=\"text-green-700\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n            <path fill-rule=\"evenodd\" d=\"M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z\" clip-rule=\"evenodd\"/>\r\n          </svg>\r\n        } @else {\r\n          <svg class=\"text-red-700\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n            <path fill-rule=\"evenodd\" d=\"M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z\" clip-rule=\"evenodd\"/>\r\n          </svg>\r\n        }\r\n      </div>\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Phone</h3>\r\n      @if (userInstance?.getPhoneNumber){\r\n        <p>{{userInstance?.getPhoneNumber}}</p>\r\n      } @else {\r\n        <p>Not available</p>\r\n      }\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Provider</h3>\r\n      <p>{{userInstance?.getProviderId}}</p>\r\n    </div>\r\n\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "RegisterComponent",
-            "id": "component-RegisterComponent-f89003cd9dd26f55d9cddb13d1d34cf1dee38f02ed06ec7d45330de7f5dcd276bd9c1fe499749f1e4207ba4d7ab9dba02fb2b47ee20bbd977827d5eff504e4d0",
+            "id": "component-RegisterComponent-2f370d8255d52d98a3f733a38d36d1e0d9d62747c61742f8d613ab5a841b552be4cd6e6681ac6cc0e7ecd2e8c481bcc281770a24765997c95a7f3c94d3353d1c",
             "file": "src/app/components/Auth/register/register.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3153,7 +3248,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {ButtonsComponent} from \"../components/buttons/buttons.component\";\r\nimport {ContainerComponent} from \"../components/container/container.component\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {FormDto, UserDto} from \"../../../../../../angular-streaming/src/types\";\r\nimport {AuthServiceService} from \"../../../../../../angular-streaming/src/app/core/services/auth/auth.service.service\";\r\nimport Swal from \"sweetalert2\";\r\n\r\n\r\n\r\n@Component({\r\n  selector: 'app-sign-up',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonsComponent,\r\n    ContainerComponent,\r\n    RouterLink,\r\n    FormsModule,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './register.component.html',\r\n  styleUrl: './register.component.scss'\r\n})\r\nexport class RegisterComponent {\r\n\r\n  private readonly auth = inject(AuthServiceService)\r\n  private readonly router: Router = inject(Router)\r\n\r\n  protected form: FormGroup<FormDto>;\r\n  showPassword: boolean = false;\r\n  isAuthenticated: boolean = false;\r\n  constructor() {\r\n    this.form = new FormGroup<FormDto>({\r\n      name: new FormControl('alguien test', [\r\n        Validators.required,\r\n        Validators.minLength(4)\r\n      ]),\r\n      lastName: new FormControl('lasts test', [\r\n        Validators.required,\r\n        Validators.minLength(4)\r\n      ]),\r\n      email: new FormControl('cademi4911@jadsys.com', [\r\n        Validators.required,\r\n        Validators.email\r\n      ]),\r\n      role: new FormControl<\"Admin\" | \"Client\">('Client', [\r\n        Validators.required,\r\n        Validators.pattern(/Admin|Client/)\r\n      ]),\r\n      password: new FormControl('n8pnU9xrVAjJz*', [\r\n        Validators.required,\r\n        Validators.minLength(8),\r\n        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/)\r\n      ])\r\n    })\r\n  }\r\n\r\n  async submit(){\r\n    /*\r\n    aPgyc#P7@N2Lh5 -> cademi4911@jadsys.com\r\n    n8pnU9xrVAjJz*\r\n    T#uqP#tA7AA&Mf\r\n     */\r\n    if (!this.form.valid) return\r\n    try {\r\n      const formData = this.form.value\r\n      const data = {\r\n        email: formData.email,\r\n        role: formData.role,\r\n        password: formData.password,\r\n        name: formData.name,\r\n        lastName: formData.lastName\r\n      } as UserDto\r\n\r\n      const {user} = await this.auth.register(data)\r\n\r\n      if (user){\r\n        await Swal.fire({\r\n          title: 'Success',\r\n          text: `Welcome ${user.email}`,\r\n          icon: 'success',\r\n          showConfirmButton: true,\r\n        })\r\n        this.isAuthenticated = true\r\n        this.form.reset()\r\n        await this.router.navigateByUrl('/role/dashboard')\r\n      }\r\n\r\n    }catch (e){\r\n      if (e instanceof Error) {\r\n        alert(`Error if ${e.message}`)\r\n        console.error(e.message)\r\n      }else {\r\n        alert(`Error else ${e}`)\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {ButtonsComponent} from \"../components/buttons/buttons.component\";\r\nimport {ContainerComponent} from \"../components/container/container.component\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {FormDto, UserDto} from \"@/types\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\nimport Swal from \"sweetalert2\";\r\n\r\n\r\n\r\n@Component({\r\n  selector: 'app-sign-up',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonsComponent,\r\n    ContainerComponent,\r\n    RouterLink,\r\n    FormsModule,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './register.component.html',\r\n  styleUrl: './register.component.scss'\r\n})\r\nexport class RegisterComponent {\r\n\r\n  private readonly auth = inject(AuthServiceService)\r\n  private readonly router: Router = inject(Router)\r\n\r\n  protected form: FormGroup<FormDto>;\r\n  showPassword: boolean = false;\r\n  isAuthenticated: boolean = false;\r\n  constructor() {\r\n    this.form = new FormGroup<FormDto>({\r\n      name: new FormControl('alguien test', [\r\n        Validators.required,\r\n        Validators.minLength(4)\r\n      ]),\r\n      lastName: new FormControl('lasts test', [\r\n        Validators.required,\r\n        Validators.minLength(4)\r\n      ]),\r\n      email: new FormControl('cademi4911@jadsys.com', [\r\n        Validators.required,\r\n        Validators.email\r\n      ]),\r\n      role: new FormControl<\"Admin\" | \"Client\">('Client', [\r\n        Validators.required,\r\n        Validators.pattern(/Admin|Client/)\r\n      ]),\r\n      password: new FormControl('n8pnU9xrVAjJz*', [\r\n        Validators.required,\r\n        Validators.minLength(8),\r\n        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/)\r\n      ])\r\n    })\r\n  }\r\n\r\n  async submit(){\r\n    /*\r\n    aPgyc#P7@N2Lh5 -> cademi4911@jadsys.com\r\n    n8pnU9xrVAjJz*\r\n    T#uqP#tA7AA&Mf\r\n     */\r\n    if (!this.form.valid) return\r\n    try {\r\n\r\n\r\n    }catch (e){\r\n      if (e instanceof Error) {\r\n        alert(`Error if ${e.message}`)\r\n        console.error(e.message)\r\n      }else {\r\n        alert(`Error else ${e}`)\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n",
             "styleUrl": "./register.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3208,7 +3303,7 @@
         },
         {
             "name": "SideNavComponent",
-            "id": "component-SideNavComponent-6ccc1ecd4f94f11d7f81beb870d45338ba3589eaa9a8a6f4817f9d2000b6321dc63ba1cf5801a3cb162a8a5f573211f9c0d7c87819a08bbf63f1eaa6009fea30",
+            "id": "component-SideNavComponent-735c4f017a11e8e7a0bc70e3afc744e3e3e0f2288574d613b225ea9cae03db07998a31da579ad13d08b70fd77340730150780e6f3464fe0068ba0ada07e18148",
             "file": "src/app/pages/admin/components/side-nav/side-nav.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3299,7 +3394,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport {NavItemsComponent} from \"./nav-items/nav-items.component\";\r\nimport {NavContainerComponent} from \"./nav-container/nav-container.component\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\nimport {NavItemDto} from \"@/types\";\r\n\r\n@Component({\r\n  selector: 'app-side-nav',\r\n  standalone: true,\r\n  imports: [\r\n    RouterLink,\r\n    NavItemsComponent,\r\n    NavContainerComponent\r\n  ],\r\n  templateUrl: './side-nav.component.html',\r\n})\r\nexport class SideNavComponent {\r\n  private _authService = inject(AuthServiceService)\r\n  private router = inject(Router)\r\n\r\n  navItems: NavItemDto[] = [\r\n    {\r\n      label: 'Dashboard',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard'\r\n    },\r\n    {\r\n      label: 'Storage',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/storage'\r\n    },\r\n    {\r\n      label: 'Profile',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm1.942 4a3 3 0 0 0-2.847 2.051l-.044.133-.004.012c-.042.126-.055.167-.042.195.006.013.02.023.038.039.032.025.08.064.146.155A1 1 0 0 0 6 17h6a1 1 0 0 0 .811-.415.713.713 0 0 1 .146-.155c.019-.016.031-.026.038-.04.014-.027 0-.068-.042-.194l-.004-.012-.044-.133A3 3 0 0 0 10.059 14H7.942Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard/profile'\r\n    },\r\n    {\r\n      label: 'Gallery',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/gallery'\r\n    },\r\n    {\r\n      label: 'Settings',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z\" clip-rule=\"evenodd\"/>\r\n             </svg>\r\n            `,\r\n      path: '/dashboard/settings'\r\n    },\r\n    {\r\n      label: 'Charts',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n              <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/charts'\r\n    }\r\n  ]\r\n\r\n  async logoutAction() {\r\n    try {\r\n      await this._authService.logout();\r\n      await this.router.navigateByUrl('/auth/log-in')\r\n    }catch (e) {\r\n      if (e instanceof Error) {\r\n        console.error(e.message)\r\n      }\r\n    }\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport {NavItemsComponent} from \"./nav-items/nav-items.component\";\r\nimport {NavContainerComponent} from \"./nav-container/nav-container.component\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\nimport {NavItemDto} from \"@/types\";\r\n\r\n@Component({\r\n  selector: 'app-side-nav',\r\n  standalone: true,\r\n  imports: [\r\n    RouterLink,\r\n    NavItemsComponent,\r\n    NavContainerComponent\r\n  ],\r\n  templateUrl: './side-nav.component.html',\r\n})\r\nexport class SideNavComponent {\r\n  private _authService = inject(AuthServiceService)\r\n  private router = inject(Router)\r\n\r\n  navItems: NavItemDto[] = [\r\n    {\r\n      label: 'Dashboard',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard'\r\n    },\r\n    {\r\n      label: 'Storage',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/storage'\r\n    },\r\n    {\r\n      label: 'Profile',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm1.942 4a3 3 0 0 0-2.847 2.051l-.044.133-.004.012c-.042.126-.055.167-.042.195.006.013.02.023.038.039.032.025.08.064.146.155A1 1 0 0 0 6 17h6a1 1 0 0 0 .811-.415.713.713 0 0 1 .146-.155c.019-.016.031-.026.038-.04.014-.027 0-.068-.042-.194l-.004-.012-.044-.133A3 3 0 0 0 10.059 14H7.942Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard/profile'\r\n    },\r\n    {\r\n      label: 'Gallery',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/gallery'\r\n    },\r\n    {\r\n      label: 'Settings',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z\" clip-rule=\"evenodd\"/>\r\n             </svg>\r\n            `,\r\n      path: '/dashboard/settings'\r\n    },\r\n    {\r\n      label: 'Charts',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n              <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/charts'\r\n    }\r\n  ]\r\n\r\n  async logoutAction() {\r\n    try {\r\n\r\n    }catch (e) {\r\n      if (e instanceof Error) {\r\n        console.error(e.message)\r\n      }\r\n    }\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3308,7 +3403,7 @@
         },
         {
             "name": "StorageComponent",
-            "id": "component-StorageComponent-163d02c802af7ac9001deb5d1cdba5b5f99fe9f31bf486b96f54ddadcff118ce8ec9e2aa8a9f7d659c1434fffb411186fba6284fa1959a3d988ae25c59579add",
+            "id": "component-StorageComponent-4656eaa8a719d77215af9a08cb3be2041e70b42e1fdd0853d7925ecdaf4cad7d2ad6a200df87ff75cf3cc1b5d7038ee99608b6a3b67a9a8930462a2f6b5eee26",
             "file": "src/app/pages/admin/storage/storage.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3453,7 +3548,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {FormControl, FormGroup, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport sweet from \"sweetalert2\"\r\nimport {StorageServiceService} from \"@app/core/services/storage/storage.service.service\";\r\nimport {NgClass} from \"@angular/common\";\r\n\r\n\r\ninterface FileUpload {\r\n  file: any;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-storage',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    RouterLink,\r\n    NgClass\r\n  ],\r\n  templateUrl: './storage.component.html',\r\n})\r\nexport default class StorageComponent {\r\n\r\n  private _storageService: StorageServiceService = inject(StorageServiceService)\r\n\r\n  protected formControl;\r\n\r\n  previewUrls: string[] = [];\r\n\r\n\r\n  files: FileList[] = []\r\n\r\n\r\n  constructor() {\r\n    this.formControl = new FormGroup<FileUpload>({\r\n      file: new FormControl(null, [\r\n        Validators.required\r\n      ])\r\n    })\r\n\r\n  }\r\n\r\n  onFileChange(event: Event): void {\r\n    const input = event.target as HTMLInputElement;\r\n    if (!input || !input.files) return;\r\n\r\n    const files = input.files;\r\n\r\n    for (let i = 0; i < files.length; i++) {\r\n      const file = files[i];\r\n      const url = URL.createObjectURL(file);\r\n      this.previewUrls.push(url);\r\n    }\r\n  }\r\n\r\n  async onSubmit(event: any) {\r\n    event.preventDefault()\r\n    const files = event.target.profile.files\r\n    for (let i = 0; i < files.length; i++) {\r\n      const file = files[i];\r\n      const res = await this._storageService.uploadFile(file, 'movies')\r\n\r\n      res.task.on('state_changed',\r\n        (snapshot)=>{\r\n            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;\r\n            sweet.fire({\r\n              position: 'top-end',\r\n              icon: 'info',\r\n              title: `Subiendo archivo ${file.name}`,\r\n              text: `Progreso: ${progress.toFixed(2)}%`,\r\n              showConfirmButton: false,\r\n              timer: 1500\r\n            })\r\n        },\r\n        (error)=>{\r\n            sweet.fire({\r\n              position: 'top-end',\r\n              icon: 'error',\r\n              title: 'Error al subir el archivo',\r\n              showConfirmButton: false,\r\n              timer: 1500\r\n            })\r\n        },\r\n        ()=>{\r\n            sweet.fire({\r\n              position: 'top-end',\r\n              icon: 'success',\r\n              title: 'Archivo subido con éxito',\r\n              showConfirmButton: false,\r\n              timer: 1500\r\n            })\r\n        }\r\n      )\r\n\r\n    }\r\n    this.previewUrls = []\r\n    this.formControl.reset()\r\n  }\r\n\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {FormControl, FormGroup, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport sweet from \"sweetalert2\"\r\nimport {StorageServiceService} from \"@app/core/services/storage/storage.service.service\";\r\nimport {NgClass} from \"@angular/common\";\r\n\r\n\r\ninterface FileUpload {\r\n  file: any;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-storage',\r\n  standalone: true,\r\n  imports: [\r\n    ReactiveFormsModule,\r\n    RouterLink,\r\n    NgClass\r\n  ],\r\n  templateUrl: './storage.component.html',\r\n})\r\nexport default class StorageComponent {\r\n\r\n  private _storageService: StorageServiceService = inject(StorageServiceService)\r\n\r\n  protected formControl;\r\n\r\n  previewUrls: string[] = [];\r\n\r\n\r\n  files: FileList[] = []\r\n\r\n\r\n  constructor() {\r\n    this.formControl = new FormGroup<FileUpload>({\r\n      file: new FormControl(null, [\r\n        Validators.required\r\n      ])\r\n    })\r\n\r\n  }\r\n\r\n  onFileChange(event: Event): void {\r\n    const input = event.target as HTMLInputElement;\r\n    if (!input || !input.files) return;\r\n\r\n    const files = input.files;\r\n\r\n    for (let i = 0; i < files.length; i++) {\r\n      const file = files[i];\r\n      const url = URL.createObjectURL(file);\r\n      this.previewUrls.push(url);\r\n    }\r\n  }\r\n\r\n  async onSubmit(event: any) {\r\n    event.preventDefault()\r\n    const files = event.target.profile.files\r\n    for (let i = 0; i < files.length; i++) {\r\n      const file = files[i];\r\n    }\r\n    this.previewUrls = []\r\n    this.formControl.reset()\r\n  }\r\n\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3820,7 +3915,7 @@
                 "linktype": "component",
                 "name": "ButtonsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -3856,11 +3951,11 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/button/button.component.ts",
+                "filePath": "src/app/components/button/types.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "ButtonProps",
@@ -3920,6 +4015,15 @@
                 "type": "pipe",
                 "linktype": "pipe",
                 "name": "HtmlTransformPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/pipes/time-formatter.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "TimeFormatterPipe",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

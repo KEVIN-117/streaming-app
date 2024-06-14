@@ -59,40 +59,6 @@ export default class StorageComponent {
     const files = event.target.profile.files
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      const res = await this._storageService.uploadFile(file, 'movies')
-
-      res.task.on('state_changed',
-        (snapshot)=>{
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            sweet.fire({
-              position: 'top-end',
-              icon: 'info',
-              title: `Subiendo archivo ${file.name}`,
-              text: `Progreso: ${progress.toFixed(2)}%`,
-              showConfirmButton: false,
-              timer: 1500
-            })
-        },
-        (error)=>{
-            sweet.fire({
-              position: 'top-end',
-              icon: 'error',
-              title: 'Error al subir el archivo',
-              showConfirmButton: false,
-              timer: 1500
-            })
-        },
-        ()=>{
-            sweet.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Archivo subido con éxito',
-              showConfirmButton: false,
-              timer: 1500
-            })
-        }
-      )
-
     }
     this.previewUrls = []
     this.formControl.reset()

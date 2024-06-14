@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { HeroComponent } from './hero.component'
-import '@/app/globals/_variables.scss'
+import '@/globals/_variables.scss'
 
 const meta: Meta = {
   component: HeroComponent,

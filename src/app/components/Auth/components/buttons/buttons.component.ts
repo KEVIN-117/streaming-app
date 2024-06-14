@@ -1,6 +1,6 @@
 import {RouterLink} from "@angular/router";
-import {Component, Input} from '@angular/core';
-//import {AuthService} from "../../../../core/services/auth.service";
+import {Component, inject, Input} from '@angular/core';
+import { AuthServiceService } from "@app/core/services/auth/auth.service.service";
 import {GithubAuthProvider} from "@angular/fire/auth";
 
 @Component({
@@ -14,7 +14,7 @@ import {GithubAuthProvider} from "@angular/fire/auth";
 })
 export class ButtonsComponent {
 
-  //private _authService: AuthService = inject(AuthService)
+  //private _authService: AuthServiceService = inject(AuthServiceService)
 
 
   @Input() isLogin:boolean = false;

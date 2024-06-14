@@ -1,8 +1,7 @@
 import {Component, Input} from '@angular/core';
-import { inject } from '@angular/core';
 import swalt from "sweetalert2";
-import {ButtonComponent} from "../../../../../angular-streaming/src/app/components/button/button.component";
-import {ButtonProps} from "../../../../../angular-streaming/src/app/components/button/types";
+import {ButtonComponent} from "@app/components/button/button.component";
+import {ButtonProps} from "@app/components/button/types";
 @Component({
   selector: 'app-notification',
   standalone: true,

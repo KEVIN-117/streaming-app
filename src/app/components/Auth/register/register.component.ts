@@ -3,9 +3,9 @@ import {ButtonsComponent} from "../components/buttons/buttons.component";
 import {ContainerComponent} from "../components/container/container.component";
 import {Router, RouterLink} from "@angular/router";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {FormDto, UserDto} from "../../../../../../angular-streaming/src/types";
-import {AuthServiceService} from "../../../../../../angular-streaming/src/app/core/services/auth/auth.service.service";
-import Swal from "sweetalert2";
+import {FormDto, UserDto} from "@/types";
+import {AuthServiceService} from "@app/core/services/auth/auth.service.service";
+
 
 
 
@@ -24,8 +24,8 @@ import Swal from "sweetalert2";
 })
 export class RegisterComponent {
 
-  private readonly auth = inject(AuthServiceService)
-  private readonly router: Router = inject(Router)
+  //private readonly auth = inject(AuthServiceService)
+  //private readonly router: Router = inject(Router)
 
   protected form: FormGroup<FormDto>;
   showPassword: boolean = false;
@@ -64,28 +64,7 @@ export class RegisterComponent {
      */
     if (!this.form.valid) return
     try {
-      const formData = this.form.value
-      const data = {
-        email: formData.email,
-        role: formData.role,
-        password: formData.password,
-        name: formData.name,
-        lastName: formData.lastName
-      } as UserDto
 
-      const {user} = await this.auth.register(data)
-
-      if (user){
-        await Swal.fire({
-          title: 'Success',
-          text: `Welcome ${user.email}`,
-          icon: 'success',
-          showConfirmButton: true,
-        })
-        this.isAuthenticated = true
-        this.form.reset()
-        await this.router.navigateByUrl('/role/dashboard')
-      }
 
     }catch (e){
       if (e instanceof Error) {

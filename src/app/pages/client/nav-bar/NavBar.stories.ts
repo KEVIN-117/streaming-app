@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
 import { NavBarComponent } from './nav-bar.component'
-import "@app/globals/_variables.scss"
+import "@/globals/_variables.scss"
 
 const meta: Meta = {
   component: NavBarComponent,

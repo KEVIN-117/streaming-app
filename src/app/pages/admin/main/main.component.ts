@@ -9,12 +9,12 @@ import {AuthServiceService} from "@app/core/services/auth/auth.service.service";
   templateUrl: './main.component.html',
 })
 export class MainComponent {
-  private readonly auth = inject(AuthServiceService)
+  private readonly authState = inject(AuthServiceService).authState
   private readonly db = inject(DatabaseServiceService)
 
 
   ngOnInit() {
-    this.auth.authState.subscribe(user =>{
+    this.authState.subscribe(user =>{
       if (user) {
         /*const email = user.email as string
         this.db.getUserByEmail(email).then(user => {

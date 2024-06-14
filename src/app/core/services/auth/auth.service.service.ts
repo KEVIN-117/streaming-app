@@ -6,7 +6,7 @@ import {Auth, authState} from "@angular/fire/auth";
 })
 export class AuthServiceService {
   private readonly auth: Auth = inject(Auth)
-  private readonly authState = authState(this.auth)
+  readonly authState = authState(this.auth)
   constructor() { }
 
 }

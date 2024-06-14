@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {ContainerComponent} from "../Auth/components/container/container.component";
 import {RouterLink} from "@angular/router";
-import {ButtonComponent} from "../../../../../angular-streaming/src/app/components/button/button.component";
-import {ButtonProps} from "../../../../../angular-streaming/src/app/components/button/types";
+import {ButtonComponent} from "@app/components/button/button.component";
+import {ButtonProps} from "@app/components/button/types";
 
 @Component({
   selector: 'app-not-found',
