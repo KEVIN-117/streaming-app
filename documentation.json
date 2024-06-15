@@ -2572,84 +2572,7 @@
         },
         {
             "name": "MainComponent",
-            "id": "component-MainComponent-62b2da2d5d9ecc2d006b66495999b02768cbe7c946baaa73135e36af2afe84710e542720628c5127b0e8b473ae816282b01b58864d79e347cc917cd8598194b7",
-            "file": "src/app/pages/admin/main/main.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-main",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./main.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "authState",
-                    "defaultValue": "inject(AuthServiceService).authState",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
-                    "name": "db",
-                    "defaultValue": "inject(DatabaseServiceService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 13,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 16,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {DatabaseServiceService} from \"@app/core/services/database/database.service.service\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\n\r\n@Component({\r\n  selector: 'app-main',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './main.component.html',\r\n})\r\nexport class MainComponent {\r\n  private readonly authState = inject(AuthServiceService).authState\r\n  private readonly db = inject(DatabaseServiceService)\r\n\r\n\r\n  ngOnInit() {\r\n    this.authState.subscribe(user =>{\r\n      if (user) {\r\n        /*const email = user.email as string\r\n        this.db.getUserByEmail(email).then(user => {\r\n          console.log(user)\r\n        })*/\r\n      }\r\n    })\r\n  }\r\n\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<div class=\"relative\">\r\n  <div class=\"absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n  <div class=\"mx-auto max-w-2xl py-32 sm:py-48 lg:py-56\">\r\n    <div class=\"hidden sm:mb-8 sm:flex sm:justify-center\">\r\n      <div class=\"relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-slate-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20\">\r\n        Announcing our next round of funding. <a href=\"#\" class=\"font-semibold text-indigo-600\"><span class=\"absolute inset-0\" aria-hidden=\"true\"></span>Read more <span aria-hidden=\"true\">&rarr;</span></a>\r\n      </div>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <h1 class=\"text-4xl font-bold tracking-tight text-gray-900 dark:text-slate-500 sm:text-6xl\">Data to enrich your online business</h1>\r\n      <p class=\"mt-6 text-lg leading-8 text-gray-600\">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>\r\n      <div class=\"mt-10 flex items-center justify-evenly gap-x-6\">\r\n        <a href=\"#\" class=\"rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600\">Get started</a>\r\n        <a href=\"#\" class=\"text-sm font-semibold leading-6 text-gray-900 dark:text-slate-500\">Learn more <span aria-hidden=\"true\">→</span></a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n\r\n</div>\r\n"
-        },
-        {
-            "name": "MainComponent",
-            "id": "component-MainComponent-a2a4fde701c4d46bf88ed75f9dca4bbea54bb33230fbd319e5377b91314c9f45848a88425a9e08598303e9be584a793b1ce2ba25f733510aecb19204494ed1c3-1",
+            "id": "component-MainComponent-a2a4fde701c4d46bf88ed75f9dca4bbea54bb33230fbd319e5377b91314c9f45848a88425a9e08598303e9be584a793b1ce2ba25f733510aecb19204494ed1c3",
             "file": "src/app/pages/client/main/main.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2804,10 +2727,87 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
+            "templateData": "<div #scrollContainer  class=\"relative h-screen flex flex-col gap-6 snap-y snap-mandatory overflow-y-scroll\">\r\n  @for(prop of moviesData; track $index){\r\n    <app-hero\r\n      class=\"snap-center shrink-0\"\r\n      [Props]=\"prop\"\r\n    ></app-hero>\r\n  }\r\n</div>\r\n<div>\r\n  <h1>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n  </h1>\r\n</div>\r\n"
+        },
+        {
+            "name": "MainComponent",
+            "id": "component-MainComponent-62b2da2d5d9ecc2d006b66495999b02768cbe7c946baaa73135e36af2afe84710e542720628c5127b0e8b473ae816282b01b58864d79e347cc917cd8598194b7-1",
+            "file": "src/app/pages/admin/main/main.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-main",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./main.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "authState",
+                    "defaultValue": "inject(AuthServiceService).authState",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "db",
+                    "defaultValue": "inject(DatabaseServiceService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {DatabaseServiceService} from \"@app/core/services/database/database.service.service\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\n\r\n@Component({\r\n  selector: 'app-main',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './main.component.html',\r\n})\r\nexport class MainComponent {\r\n  private readonly authState = inject(AuthServiceService).authState\r\n  private readonly db = inject(DatabaseServiceService)\r\n\r\n\r\n  ngOnInit() {\r\n    this.authState.subscribe(user =>{\r\n      if (user) {\r\n        /*const email = user.email as string\r\n        this.db.getUserByEmail(email).then(user => {\r\n          console.log(user)\r\n        })*/\r\n      }\r\n    })\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "MainComponent-1",
-            "templateData": "<div #scrollContainer  class=\"relative h-screen flex flex-col gap-6 snap-y snap-mandatory overflow-y-scroll\">\r\n  @for(prop of moviesData; track $index){\r\n    <app-hero\r\n      class=\"snap-center shrink-0\"\r\n      [Props]=\"prop\"\r\n    ></app-hero>\r\n  }\r\n</div>\r\n<div>\r\n  <h1>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n  </h1>\r\n</div>\r\n"
+            "templateData": "<div class=\"relative\">\r\n  <div class=\"absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n  <div class=\"mx-auto max-w-2xl py-32 sm:py-48 lg:py-56\">\r\n    <div class=\"hidden sm:mb-8 sm:flex sm:justify-center\">\r\n      <div class=\"relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-slate-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20\">\r\n        Announcing our next round of funding. <a href=\"#\" class=\"font-semibold text-indigo-600\"><span class=\"absolute inset-0\" aria-hidden=\"true\"></span>Read more <span aria-hidden=\"true\">&rarr;</span></a>\r\n      </div>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <h1 class=\"text-4xl font-bold tracking-tight text-gray-900 dark:text-slate-500 sm:text-6xl\">Data to enrich your online business</h1>\r\n      <p class=\"mt-6 text-lg leading-8 text-gray-600\">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>\r\n      <div class=\"mt-10 flex items-center justify-evenly gap-x-6\">\r\n        <a href=\"#\" class=\"rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600\">Get started</a>\r\n        <a href=\"#\" class=\"text-sm font-semibold leading-6 text-gray-900 dark:text-slate-500\">Learn more <span aria-hidden=\"true\">→</span></a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n\r\n</div>\r\n"
         },
         {
             "name": "NavBarComponent",
@@ -3852,7 +3852,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "CanActivateFn",
-                "defaultValue": "(route, state) => {\r\n  return true;\r\n}"
+                "defaultValue": "(route, state) => {\r\n  const authState = authServiceEstate()\r\n  const router = routerService()\r\n  return authState.pipe(\r\n    map(user => {\r\n      if (!user){\r\n        router.navigateByUrl(\"/auth/log-in\").then()\r\n        return false\r\n      }\r\n      return true\r\n    })\r\n  );\r\n}"
+            },
+            {
+                "name": "authServiceEstate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/guards/auth-guard.guard.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => inject(AuthServiceService).authState"
             },
             {
                 "name": "bootstrap",
@@ -3903,6 +3913,26 @@
                 "deprecationMessage": "",
                 "type": "HttpInterceptorFn",
                 "defaultValue": "(req, next) => {\r\n  return next(req);\r\n}"
+            },
+            {
+                "name": "publicGuard",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/guards/auth-guard.guard.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "CanActivateFn",
+                "defaultValue": "(route, state)=>{\r\n  const authState = authServiceEstate()\r\n  const router = routerService()\r\n  return authState.pipe(\r\n    map(user =>{\r\n      if (user){\r\n        router.navigateByUrl(\"/dashboard\").then()\r\n        return false\r\n      }\r\n      return true\r\n    })\r\n  );\r\n}"
+            },
+            {
+                "name": "routerService",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/guards/auth-guard.guard.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "()=> inject(Router)"
             },
             {
                 "name": "serverConfig",
@@ -3996,7 +4026,37 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "CanActivateFn",
-                    "defaultValue": "(route, state) => {\r\n  return true;\r\n}"
+                    "defaultValue": "(route, state) => {\r\n  const authState = authServiceEstate()\r\n  const router = routerService()\r\n  return authState.pipe(\r\n    map(user => {\r\n      if (!user){\r\n        router.navigateByUrl(\"/auth/log-in\").then()\r\n        return false\r\n      }\r\n      return true\r\n    })\r\n  );\r\n}"
+                },
+                {
+                    "name": "authServiceEstate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/guards/auth-guard.guard.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => inject(AuthServiceService).authState"
+                },
+                {
+                    "name": "publicGuard",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/guards/auth-guard.guard.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CanActivateFn",
+                    "defaultValue": "(route, state)=>{\r\n  const authState = authServiceEstate()\r\n  const router = routerService()\r\n  return authState.pipe(\r\n    map(user =>{\r\n      if (user){\r\n        router.navigateByUrl(\"/dashboard\").then()\r\n        return false\r\n      }\r\n      return true\r\n    })\r\n  );\r\n}"
+                },
+                {
+                    "name": "routerService",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/guards/auth-guard.guard.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "()=> inject(Router)"
                 }
             ],
             "src/main.server.ts": [
@@ -4263,6 +4323,36 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "authGuardGuard",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/guards/auth-guard.guard.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "authServiceEstate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/guards/auth-guard.guard.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "publicGuard",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/guards/auth-guard.guard.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "routerService",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

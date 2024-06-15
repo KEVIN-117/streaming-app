@@ -4,6 +4,7 @@ import {NavItemsComponent} from "./nav-items/nav-items.component";
 import {NavContainerComponent} from "./nav-container/nav-container.component";
 import {AuthServiceService} from "@app/core/services/auth/auth.service.service";
 import {NavItemDto} from "@/types";
+import swalt from "sweetalert2";
 
 @Component({
   selector: 'app-side-nav',
@@ -73,6 +74,20 @@ export class SideNavComponent {
   async logoutAction() {
     try {
 
+      await this._authService.logout()
+      await swalt.fire({
+        icon: "success",
+        title: `<div>
+                     <h2 class="text-2xl font-bold text-blue-900"> Cuenta cerrada con exito</h2>
+                     <p class="text-sky-600">
+                        Esperamos verte de nuevo muy pronto
+                     </p>
+                </div>`,
+        showConfirmButton: false,
+        timer: 2000,
+        background: '#1a202c'
+      })
+      await this.router.navigateByUrl("/")
     }catch (e) {
       if (e instanceof Error) {
         console.error(e.message)

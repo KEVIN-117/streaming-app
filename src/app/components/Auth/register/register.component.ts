@@ -5,6 +5,7 @@ import {Router, RouterLink} from "@angular/router";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {FormDto, UserDto} from "@/types";
 import {AuthServiceService} from "@app/core/services/auth/auth.service.service";
+import swalt from "sweetalert2"
 
 
 
@@ -24,8 +25,8 @@ import {AuthServiceService} from "@app/core/services/auth/auth.service.service";
 })
 export class RegisterComponent {
 
-  //private readonly auth = inject(AuthServiceService)
-  //private readonly router: Router = inject(Router)
+  private readonly auth = inject(AuthServiceService)
+  private readonly router: Router = inject(Router)
 
   protected form: FormGroup<FormDto>;
 
@@ -65,7 +66,33 @@ export class RegisterComponent {
      */
     if (!this.form.valid) return
     try {
+      const data = this.form.value
+      const credentials: UserDto = {
+        email: data.email,
+        name: data.name,
+        lastName: data.lastName,
+        password: data.password,
+        role: data.role
+      } as UserDto
 
+      const {user} = await this.auth.register(credentials)
+
+      if (user){
+        await swalt.fire({
+          icon: "success",
+          title: `<div>
+                     <h2 class="text-2xl font-bold text-blue-900"> Cuenta creada con exito</h2>
+                     <p class="text-sky-600">
+                      ${user.email}
+                     </p>
+                </div>`,
+          showConfirmButton: false,
+          timer: 2000,
+          background: '#1a202c'
+        })
+        this.form.reset()
+        await this.router.navigateByUrl("/dashboard")
+      }
 
     }catch (e){
       if (e instanceof Error) {

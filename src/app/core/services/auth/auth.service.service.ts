@@ -20,6 +20,7 @@ export class AuthServiceService {
   }
 
   async register(credentials: UserDto){
+    console.log(credentials)
     await this.userDataBase.createUser(credentials)
     const {email, password} = credentials
     return await createUserWithEmailAndPassword(this.auth, email, password)
