@@ -38,9 +38,9 @@ interface UserData{
   email: string;
   displayName: string;
   photoURL: string;
-  emailVerified: boolean;
+  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario
   phoneNumber: string;
-  providerId: string;
+  providerId: string;// github, google, password
 }
 
 interface NavItem{
@@ -113,3 +113,5 @@ export type UserDto = User
 export type DataBaseImagesDto = DataBaseImages
 export type UserDataDto = UserData
 export type NavItemDto = NavItem
+
+

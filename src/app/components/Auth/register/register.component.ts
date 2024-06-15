@@ -28,6 +28,7 @@ export class RegisterComponent {
   //private readonly router: Router = inject(Router)
 
   protected form: FormGroup<FormDto>;
+
   showPassword: boolean = false;
   isAuthenticated: boolean = false;
   constructor() {

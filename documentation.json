@@ -191,12 +191,12 @@
         },
         {
             "name": "Credentials",
-            "id": "interface-Credentials-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44",
+            "id": "interface-Credentials-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "properties": [
                 {
                     "name": "email",
@@ -233,12 +233,12 @@
         },
         {
             "name": "DataBaseImages",
-            "id": "interface-DataBaseImages-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44",
+            "id": "interface-DataBaseImages-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "properties": [
                 {
                     "name": "data",
@@ -290,12 +290,12 @@
         },
         {
             "name": "Form",
-            "id": "interface-Form-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44",
+            "id": "interface-Form-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "properties": [
                 {
                     "name": "email",
@@ -350,12 +350,12 @@
         },
         {
             "name": "GenericObject",
-            "id": "interface-GenericObject-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44",
+            "id": "interface-GenericObject-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "properties": [
                 {
                     "name": "email",
@@ -539,12 +539,12 @@
         },
         {
             "name": "NavItem",
-            "id": "interface-NavItem-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44",
+            "id": "interface-NavItem-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "properties": [
                 {
                     "name": "icon",
@@ -581,12 +581,12 @@
         },
         {
             "name": "NavItem",
-            "id": "interface-NavItem-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44-1",
+            "id": "interface-NavItem-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37-1",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "properties": [
                 {
                     "name": "icon",
@@ -650,12 +650,12 @@
         },
         {
             "name": "User",
-            "id": "interface-User-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44-1",
+            "id": "interface-User-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37-1",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "properties": [
                 {
                     "name": "lastName",
@@ -688,12 +688,12 @@
         },
         {
             "name": "UserData",
-            "id": "interface-UserData-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44",
+            "id": "interface-UserData-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "properties": [
                 {
                     "name": "displayName",
@@ -759,7 +759,7 @@
     "injectables": [
         {
             "name": "AuthServiceService",
-            "id": "injectable-AuthServiceService-6e4f9cd5b47d2e8805b65c4b6ae1a2c8411a6bef20c6c4de50038bc1a038e9d6b9b5da8c769615c7f44cdb757ff7a2db601f28938051aa642b0a4bad01308d11",
+            "id": "injectable-AuthServiceService-7f041d08cbb92e808423121bca8e8740274e4da7d6c6b21b28be34dfcfc0e5743e18fd8f798deec8781f5b2674f29b80f446899376e98107574b85b30a2df22c",
             "file": "src/app/core/services/auth/auth.service.service.ts",
             "properties": [
                 {
@@ -770,7 +770,7 @@
                     "type": "Auth",
                     "optional": false,
                     "description": "",
-                    "line": 8,
+                    "line": 10,
                     "modifierKind": [
                         123,
                         148
@@ -784,69 +784,279 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 9,
+                    "line": 13,
                     "modifierKind": [
                         148
                     ]
-                }
-            ],
-            "methods": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "description": "",
-            "rawdescription": "\n",
-            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\nimport {Auth, authState} from \"@angular/fire/auth\";\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class AuthServiceService {\r\n  private readonly auth: Auth = inject(Auth)\r\n  readonly authState = authState(this.auth)\r\n  constructor() { }\r\n\r\n}\r\n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 9
-            },
-            "extends": [],
-            "type": "injectable"
-        },
-        {
-            "name": "DatabaseServiceService",
-            "id": "injectable-DatabaseServiceService-53308d3da6236b978a78eaab2afe6eba02a5a14d198b5d436430d36e5ae7a9065252f72e9d87e15043f5b6a3393c4d5c66b0c63d5f4b94d982ca0a43ddbd6ae6",
-            "file": "src/app/core/services/database/database.service.service.ts",
-            "properties": [
+                },
                 {
-                    "name": "dataBase",
-                    "defaultValue": "inject(Database)",
+                    "name": "userDataBase",
+                    "defaultValue": "inject(DatabaseServiceService)",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Database",
+                    "type": "DatabaseServiceService",
                     "optional": false,
                     "description": "",
-                    "line": 8,
+                    "line": 11,
                     "modifierKind": [
                         123,
                         148
                     ]
                 }
             ],
-            "methods": [],
+            "methods": [
+                {
+                    "name": "login",
+                    "args": [
+                        {
+                            "name": "credentials",
+                            "type": "Credentials",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "unknown",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "credentials",
+                            "type": "Credentials",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "logout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "register",
+                    "args": [
+                        {
+                            "name": "credentials",
+                            "type": "UserDto",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "unknown",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "credentials",
+                            "type": "UserDto",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\nimport {Database} from \"@angular/fire/database\";\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class DatabaseServiceService {\r\n  private readonly dataBase: Database = inject(Database)\r\n  constructor() { }\r\n}\r\n",
+            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\nimport {Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword} from \"@angular/fire/auth\";\r\nimport {DatabaseServiceService} from \"@app/core/services/database/database.service.service\";\r\nimport {Credentials, UserDto} from \"@/types\";\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class AuthServiceService {\r\n  private readonly auth: Auth = inject(Auth)\r\n  private readonly userDataBase: DatabaseServiceService = inject(DatabaseServiceService)\r\n\r\n  readonly authState = authState(this.auth)\r\n\r\n  constructor() { }\r\n\r\n\r\n  async login(credentials: Credentials){\r\n    return await signInWithEmailAndPassword(this.auth, credentials.email, credentials.password)\r\n  }\r\n\r\n  async register(credentials: UserDto){\r\n    await this.userDataBase.createUser(credentials)\r\n    const {email, password} = credentials\r\n    return await createUserWithEmailAndPassword(this.auth, email, password)\r\n  }\r\n\r\n  logout(){\r\n    return this.auth.signOut()\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 13
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "DatabaseServiceService",
+            "id": "injectable-DatabaseServiceService-c3d553c3378daae6cefe5800cdf2d1f14831c4ac5f84524ecdcb0b95136c19e55a35b60eecec228a30c55f7423b69170af69f8aecdb90717fb35df9ab0318b2a",
+            "file": "src/app/core/services/database/database.service.service.ts",
+            "properties": [
+                {
+                    "name": "collection$",
+                    "defaultValue": "collection(this.dataBase, 'users')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "dataBase",
+                    "defaultValue": "inject(Firestore)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Firestore",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "createUser",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": "UserDto",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "unknown",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "UserDto",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "document",
+                    "args": [
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getUser",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "unknown",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\n//import {Database} from \"@angular/fire/database\";\r\nimport {addDoc, collection, doc, Firestore, getDocs, query, where} from \"@angular/fire/firestore\";\r\nimport {UserDto} from \"@/types\";\r\nimport {User} from \"@/stories/user\";\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class DatabaseServiceService {\r\n  private readonly dataBase: Firestore = inject(Firestore)\r\n\r\n  private readonly collection$ = collection(this.dataBase, 'users');\r\n  constructor() { }\r\n\r\n\r\n  private document(path: string, id: string){\r\n    return doc(this.dataBase, `${path}/${id}`)\r\n  }\r\n\r\n  async createUser(data: UserDto){\r\n    return await addDoc(this.collection$, data)\r\n  }\r\n\r\n\r\n  async getUser(id: string){\r\n    try {\r\n      let user: UserDto = {} as UserDto\r\n\r\n      const q = query(this.collection$, where('id', '==', id))\r\n\r\n      const querySnapshot = await getDocs(q)\r\n\r\n\r\n      querySnapshot.forEach((doc) =>{\r\n        user = {...doc.data() as UserDto}\r\n      })\r\n\r\n      return user\r\n\r\n\r\n    } catch (error) {\r\n      console.error(error)\r\n      return  {} as UserDto\r\n    }\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 13
             },
             "extends": [],
             "type": "injectable"
         },
         {
             "name": "StorageServiceService",
-            "id": "injectable-StorageServiceService-c7a0f5af092d5f7098738f2f848794a11abece43a2a9f669f3cb7e86392dadec6a8fcea1794730d3ca524ade91d970b2c410eb41ac1f38108854b987e4c60d7b",
+            "id": "injectable-StorageServiceService-5f33a48940540aca2f3fd7b415fb9fdbb647c14cb0020c1f08b9abdc1214daf785d918314251fef311198b111a8cda77b266cfe6808e0d3383896801894363e5",
             "file": "src/app/core/services/storage/storage.service.service.ts",
             "properties": [
                 {
@@ -857,26 +1067,73 @@
                     "type": "Storage",
                     "optional": false,
                     "description": "",
-                    "line": 7,
+                    "line": 19,
                     "modifierKind": [
                         123,
                         148
                     ]
                 }
             ],
-            "methods": [],
+            "methods": [
+                {
+                    "name": "uploadFile",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": "File",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "unknown",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "File",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "path",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class StorageServiceService {\r\n  private readonly storage:Storage = inject(Storage)\r\n  constructor() { }\r\n}\r\n",
+            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\nimport {ref, Storage, uploadBytesResumable} from \"@angular/fire/storage\";\r\n\r\n\r\nexport class FileUpload{\r\n  key!: string;\r\n  name!: string;\r\n  url!: string;\r\n  file!: File;\r\n  constructor(file: File) {\r\n    this.file = file\r\n  }\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class StorageServiceService {\r\n  private readonly storage:Storage = inject(Storage)\r\n  constructor() { }\r\n\r\n\r\n\r\n  async uploadFile(data: File, path: string){\r\n    const fileUpload = new FileUpload(data)\r\n    const bucketRef = ref(this.storage, `${path}/${fileUpload.file.name}`)\r\n    return uploadBytesResumable(bucketRef, fileUpload.file)\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 7
+                "line": 19
             },
             "extends": [],
             "type": "injectable"
@@ -886,13 +1143,93 @@
     "interceptors": [],
     "classes": [
         {
+            "name": "FileUpload",
+            "id": "class-FileUpload-5f33a48940540aca2f3fd7b415fb9fdbb647c14cb0020c1f08b9abdc1214daf785d918314251fef311198b111a8cda77b266cfe6808e0d3383896801894363e5",
+            "file": "src/app/core/services/storage/storage.service.service.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import {inject, Injectable} from '@angular/core';\r\nimport {ref, Storage, uploadBytesResumable} from \"@angular/fire/storage\";\r\n\r\n\r\nexport class FileUpload{\r\n  key!: string;\r\n  name!: string;\r\n  url!: string;\r\n  file!: File;\r\n  constructor(file: File) {\r\n    this.file = file\r\n  }\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class StorageServiceService {\r\n  private readonly storage:Storage = inject(Storage)\r\n  constructor() { }\r\n\r\n\r\n\r\n  async uploadFile(data: File, path: string){\r\n    const fileUpload = new FileUpload(data)\r\n    const bucketRef = ref(this.storage, `${path}/${fileUpload.file.name}`)\r\n    return uploadBytesResumable(bucketRef, fileUpload.file)\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "file",
+                        "type": "File",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "file",
+                        "type": "File",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [
+                {
+                    "name": "file",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "File",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "key",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
             "name": "UserSchema",
-            "id": "class-UserSchema-39e5e5764f2337e031d127918d7bcfaa2b383af1aec1b2f378521dafb832b035ae97df7751d45f4c44be7aa5ce16a404a3fa507269647480bc874e83f2f2de44",
+            "id": "class-UserSchema-d9808d11b7790ba108518ca0c78e569d34cf4b2a1ceca78bfd43758d98c7dd7c68a16ffdb53e73d4925c3da18970fcea52af2b2777450bc929af3b32eb27fc37",
             "file": "src/types/index.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;\r\n  phoneNumber: string;\r\n  providerId: string;\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n",
+            "sourceCode": "import {FormControl} from \"@angular/forms\";\r\n\r\ninterface Form{\r\n  name: FormControl<string | null>;\r\n  lastName: FormControl<string | null>;\r\n  role: FormControl<string | null>;\r\n  email: FormControl<string | null>;\r\n  password: FormControl<string | null>;\r\n}\r\n\r\nexport interface Credentials{\r\n  email: string;\r\n  role: string;\r\n  password: string;\r\n}\r\n\r\ninterface User extends Credentials{\r\n  name: string;\r\n  lastName: string;\r\n}\r\n\r\nexport interface GenericObject<T, R>{\r\n  name: T;\r\n  lastName: T;\r\n  email: T;\r\n  password: T;\r\n}\r\n\r\ninterface DataBaseImages{\r\n  data: {\r\n    name: string;\r\n    url: string;\r\n  },\r\n  key: string;\r\n}\r\n\r\ninterface UserData{\r\n  email: string;\r\n  displayName: string;\r\n  photoURL: string;\r\n  emailVerified: boolean;// true -> si el usuario a verificado su email, falso en caso cotrario\r\n  phoneNumber: string;\r\n  providerId: string;// github, google, password\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport class UserSchema{\r\n  private readonly email: string;\r\n  private readonly displayName: string;\r\n  private readonly photoURL: string;\r\n  private readonly emailVerified: boolean;\r\n  private readonly phoneNumber: string;\r\n  private readonly providerId: string;\r\n\r\n  constructor(email: string, displayName: string, photoURL: string, emailVerified: boolean, phoneNumber: string, providerId: string) {\r\n    this.email = email;\r\n    this.displayName = displayName;\r\n    this.photoURL = photoURL;\r\n    this.emailVerified = emailVerified;\r\n    this.phoneNumber = phoneNumber;\r\n    this.providerId = providerId;\r\n  }\r\n\r\n  get getEmail(): string {\r\n    return this.email;\r\n  }\r\n\r\n  get getDisplayName(): string {\r\n    return this.displayName;\r\n  }\r\n\r\n  get getPhotoURL(): string {\r\n    return this.photoURL;\r\n  }\r\n\r\n  get getEmailVerified(): boolean {\r\n    return this.emailVerified;\r\n  }\r\n\r\n  get getPhoneNumber(): string {\r\n    return this.phoneNumber;\r\n  }\r\n\r\n  get getProviderId(): string {\r\n    return this.providerId;\r\n  }\r\n\r\n  get fullData(): UserDataDto{\r\n    return {\r\n      email: this.email,\r\n      displayName: this.displayName,\r\n      photoURL: this.photoURL,\r\n      emailVerified: this.emailVerified,\r\n      phoneNumber: this.phoneNumber,\r\n      providerId: this.providerId\r\n    }\r\n  }\r\n}\r\n\r\ninterface NavItem{\r\n  path: string,\r\n  label: string,\r\n  icon: string\r\n}\r\n\r\nexport type FormDto = Form\r\nexport type UserDto = User\r\nexport type DataBaseImagesDto = DataBaseImages\r\nexport type UserDataDto = UserData\r\nexport type NavItemDto = NavItem\r\n\r\n\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -1477,7 +1814,7 @@
         },
         {
             "name": "ButtonsComponent",
-            "id": "component-ButtonsComponent-a4a946769176ee1be385a26acba44d72f16980df6c5333b36f4f23e853fefeab72dfd1be064eabdd1c8727fc3abd6dd834d5706308a625636ef3b45c02452b81",
+            "id": "component-ButtonsComponent-143bf71e21dcce676866dd9614a8fc38c62e087f32d891335be2573685459bb4642798816550e48f7eb19316cbae4d4e37ae2c5770a72f0ceeb63dc590525e7d",
             "file": "src/app/components/Auth/components/buttons/buttons.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1504,21 +1841,7 @@
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "_authService",
-                    "defaultValue": "inject(AuthServiceService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "AuthServiceService",
-                    "optional": false,
-                    "description": "",
-                    "line": 17,
-                    "modifierKind": [
-                        123
-                    ]
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [
                 {
                     "name": "action",
@@ -1591,7 +1914,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {RouterLink} from \"@angular/router\";\r\nimport {Component, inject, Input} from '@angular/core';\r\nimport { AuthServiceService } from \"@app/core/services/auth/auth.service.service\";\r\nimport {GithubAuthProvider} from \"@angular/fire/auth\";\r\n\r\n@Component({\r\n  selector: 'app-buttons',\r\n  standalone: true,\r\n  imports: [\r\n    RouterLink\r\n  ],\r\n  templateUrl: './buttons.component.html',\r\n  styleUrl: './buttons.component.scss'\r\n})\r\nexport class ButtonsComponent {\r\n\r\n  private _authService: AuthServiceService = inject(AuthServiceService)\r\n\r\n\r\n  @Input() isLogin:boolean = false;\r\n\r\n  async action(provider: string){\r\n    if (provider === 'google'){\r\n      await this.loginWhitGoogle()\r\n    } else if (provider === 'github'){\r\n      await this.loginWhitGithub()\r\n    }\r\n  }\r\n\r\n  async loginWhitGoogle(){\r\n    try {\r\n      /*const  res = await this._authService.googleAuth()\r\n      await this._router.navigateByUrl('/dashboard')\r\n\r\n      console.log(res.user)\r\n      console.log(typeof res)*/\r\n    }catch (e){\r\n      console.error(e)\r\n    }\r\n  }\r\n\r\n  async loginWhitGithub(){\r\n    try {\r\n      /*const  res = await this._authService.githubAuth()\r\n      await this._router.navigateByUrl('/dashboard')\r\n      console.log(res.user)\r\n      console.log(typeof res)*/\r\n    }catch (e){\r\n      console.error(e)\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import {RouterLink} from \"@angular/router\";\r\nimport {Component, inject, Input} from '@angular/core';\r\nimport { AuthServiceService } from \"@app/core/services/auth/auth.service.service\";\r\nimport {GithubAuthProvider} from \"@angular/fire/auth\";\r\n\r\n@Component({\r\n  selector: 'app-buttons',\r\n  standalone: true,\r\n  imports: [\r\n    RouterLink\r\n  ],\r\n  templateUrl: './buttons.component.html',\r\n  styleUrl: './buttons.component.scss'\r\n})\r\nexport class ButtonsComponent {\r\n\r\n  //private _authService: AuthServiceService = inject(AuthServiceService)\r\n\r\n\r\n  @Input() isLogin:boolean = false;\r\n\r\n  async action(provider: string){\r\n    if (provider === 'google'){\r\n      await this.loginWhitGoogle()\r\n    } else if (provider === 'github'){\r\n      await this.loginWhitGithub()\r\n    }\r\n  }\r\n\r\n  async loginWhitGoogle(){\r\n    try {\r\n      /*const  res = await this._authService.googleAuth()\r\n      await this._router.navigateByUrl('/dashboard')\r\n\r\n      console.log(res.user)\r\n      console.log(typeof res)*/\r\n    }catch (e){\r\n      console.error(e)\r\n    }\r\n  }\r\n\r\n  async loginWhitGithub(){\r\n    try {\r\n      /*const  res = await this._authService.githubAuth()\r\n      await this._router.navigateByUrl('/dashboard')\r\n      console.log(res.user)\r\n      console.log(typeof res)*/\r\n    }catch (e){\r\n      console.error(e)\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./buttons.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2150,7 +2473,7 @@
         },
         {
             "name": "LogInComponent",
-            "id": "component-LogInComponent-0d14395ac2deafa81aab4df187662aaf3771b0bec174ae6e02fd9a09a6a6e69818f6f50176b5bdc68f46534e54ec32c7c5af1d508d9bb3a918bf5f74ab44fb21",
+            "id": "component-LogInComponent-d51052731c7347bd77d987819a0f6a5023bef0e14457fd095e28d24e48e07328c6de9c895dcee32f17b1d8632bf3c4efb2619023101394589b2e186bd1ea08f7",
             "file": "src/app/components/Auth/log-in/log-in.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2169,43 +2492,15 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "auth",
-                    "defaultValue": "inject(AuthServiceService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 25,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
                     "name": "formControl",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 27,
                     "modifierKind": [
                         124
-                    ]
-                },
-                {
-                    "name": "router",
-                    "defaultValue": "inject(Router)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 26,
-                    "modifierKind": [
-                        123,
-                        148
                     ]
                 },
                 {
@@ -2216,7 +2511,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 28
                 }
             ],
             "methodsClass": [
@@ -2226,7 +2521,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 46,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2259,7 +2554,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {ButtonsComponent} from \"../components/buttons/buttons.component\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport {ContainerComponent} from \"../components/container/container.component\";\r\nimport { FormGroup, FormControl, Validators } from '@angular/forms'\r\nimport { ReactiveFormsModule } from \"@angular/forms\"\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\nimport {Credentials, UserDto} from \"@/types\";\r\nimport Swal from \"sweetalert2\";\r\n\r\n@Component({\r\n  selector: 'app-log-in',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonsComponent,\r\n    RouterLink,\r\n    ContainerComponent,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './log-in.component.html',\r\n  styleUrl: './log-in.component.scss'\r\n})\r\nexport class LogInComponent {\r\n\r\n  private readonly auth = inject(AuthServiceService)\r\n  private readonly router = inject(Router)\r\n\r\n  protected formControl;\r\n  showPassword: boolean = false;\r\n  constructor() {\r\n    this.formControl = new FormGroup({\r\n      email: new FormControl('cademi4911@jadsys.com', [\r\n        Validators.required,\r\n        Validators.email\r\n      ]),\r\n      role: new FormControl<\"Admin\" | \"Client\">('Client', [\r\n        Validators.required,\r\n        Validators.pattern(/Admin|Client/)\r\n      ]),\r\n      password: new FormControl('n8pnU9xrVAjJz*', [\r\n        Validators.required,\r\n        Validators.minLength(8)\r\n      ])\r\n    })\r\n  }\r\n\r\n  async onSubmit() {\r\n    if (!this.formControl.valid) return\r\n    try {\r\n\r\n    }catch (e) {\r\n      if (e instanceof Error) {\r\n        console.error(e.message)\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {ButtonsComponent} from \"../components/buttons/buttons.component\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport {ContainerComponent} from \"../components/container/container.component\";\r\nimport { FormGroup, FormControl, Validators } from '@angular/forms'\r\nimport { ReactiveFormsModule } from \"@angular/forms\"\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\n\r\n\r\n@Component({\r\n  selector: 'app-log-in',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonsComponent,\r\n    RouterLink,\r\n    ContainerComponent,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './log-in.component.html',\r\n  styleUrl: './log-in.component.scss'\r\n})\r\nexport class LogInComponent {\r\n\r\n  //private readonly auth = inject(AuthServiceService)\r\n  //private readonly router = inject(Router)\r\n\r\n  protected formControl;\r\n  showPassword: boolean = false;\r\n  constructor() {\r\n    this.formControl = new FormGroup({\r\n      email: new FormControl('cademi4911@jadsys.com', [\r\n        Validators.required,\r\n        Validators.email\r\n      ]),\r\n      role: new FormControl<\"Admin\" | \"Client\">('Client', [\r\n        Validators.required,\r\n        Validators.pattern(/Admin|Client/)\r\n      ]),\r\n      password: new FormControl('n8pnU9xrVAjJz*', [\r\n        Validators.required,\r\n        Validators.minLength(8)\r\n      ])\r\n    })\r\n  }\r\n\r\n  async onSubmit() {\r\n    if (!this.formControl.valid) return\r\n    try {\r\n\r\n    }catch (e) {\r\n      if (e instanceof Error) {\r\n        console.error(e.message)\r\n      }\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./log-in.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2270,14 +2565,91 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 29
+                "line": 28
             },
             "extends": [],
             "templateData": "<app-container>\r\n  <div class=\"flex min-h-full flex-col justify-center px-6 py-12 lg:px-8\">\r\n    <div class=\" flex flex-col justify-center items-center\">\r\n      <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewBox=\"0 0 64 64\">\r\n        <linearGradient id=\"SVGID_1__dSnah6CSCxRG_gr1\" x1=\"32\" x2=\"32\" y1=\"6.872\" y2=\"50.533\"\r\n                        gradientUnits=\"userSpaceOnUse\">\r\n          <stop offset=\"0\" stop-color=\"#1a6dff\"></stop>\r\n          <stop offset=\"1\" stop-color=\"#c822ff\"></stop>\r\n        </linearGradient>\r\n        <path fill=\"url(#SVGID_1__dSnah6CSCxRG_gr1)\"\r\n              d=\"M55.9,14.2L32.2,6.1C32,6,31.8,6,31.6,6.1L8.1,14.3c-0.4,0.2-0.7,0.6-0.7,1.1l3.7,30.8c0,0.3,0.2,0.6,0.5,0.8 l19.8,10.9c0.1,0.1,0.3,0.1,0.5,0.1c0.2,0,0.3,0,0.5-0.1l19.9-11c0.3-0.2,0.5-0.4,0.5-0.8l3.7-30.8C56.6,14.8,56.4,14.3,55.9,14.2z M51,45.3l-19,10.5L13,45.5L9.5,16l22.4-7.9l22.6,7.8L51,45.3z\">\r\n        </path>\r\n        <linearGradient id=\"SVGID_2__dSnah6CSCxRG_gr2\" x1=\"31.999\" x2=\"31.999\" y1=\"6.872\" y2=\"50.533\"\r\n                        gradientUnits=\"userSpaceOnUse\">\r\n          <stop offset=\"0\" stop-color=\"#1a6dff\"></stop>\r\n          <stop offset=\"1\" stop-color=\"#c822ff\"></stop>\r\n        </linearGradient>\r\n        <path fill=\"url(#SVGID_2__dSnah6CSCxRG_gr2)\"\r\n              d=\"M12.4,17c-0.4,0.2-0.7,0.6-0.7,1.1l3.1,25.6c0,0.3,0.2,0.6,0.5,0.8l16.1,8.8c0.1,0.1,0.3,0.1,0.5,0.1 c0.2,0,0.3,0,0.5-0.1l16.2-9c0.3-0.2,0.5-0.4,0.5-0.8L52.2,18c0.1-0.5-0.2-0.9-0.7-1.1l-19.3-6.6c-0.2-0.1-0.4-0.1-0.7,0L12.4,17z M31.9,12.3l18.2,6.3l-2.9,24.3l-15.3,8.5L16.8,43l-2.9-24.3L31.9,12.3z\">\r\n        </path>\r\n        <linearGradient id=\"SVGID_3__dSnah6CSCxRG_gr3\" x1=\"32.255\" x2=\"32.255\" y1=\"14.915\" y2=\"40.065\"\r\n                        gradientUnits=\"userSpaceOnUse\">\r\n          <stop offset=\"0\" stop-color=\"#6dc7ff\"></stop>\r\n          <stop offset=\"1\" stop-color=\"#e6abff\"></stop>\r\n        </linearGradient>\r\n        <path fill=\"url(#SVGID_3__dSnah6CSCxRG_gr3)\"\r\n              d=\"M31.9,14.2L31.9,14.2L31.9,14.2L31.9,14.2L31.9,14.2L20,41h4.4l2.4-6h10.9l2.6,6h4.4L31.9,14.2z M32,22.4\tl4.1,8.6l-7.7,0L32,22.4z\">\r\n        </path>\r\n      </svg>\r\n      <div class=\"w-full px-6 py-4 border-b border-gray-200 dark:border-gray-800\">\r\n        <h2 class=\"text-2xl text-center font-semibold leading-6 text-gray-900 dark:text-gray-50\">\r\n          Create a new account\r\n        </h2>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"mt-4\">\r\n      <form class=\"space-y-6\" autocomplete=\"off\" [formGroup]=\"formControl\" (ngSubmit)=\"onSubmit()\">\r\n        <div>\r\n          <label for=\"email\" class=\"block text-sm font-medium leading-6 text-gray-600\">\r\n            Email\r\n          </label>\r\n          <div class=\"mt-2\">\r\n            <input id=\"email\" formControlName=\"email\" name=\"email\" type=\"email\" required\r\n                   class=\"flex-1 relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\">\r\n          </div>\r\n          @if(formControl.get('email')?.hasError('required') && formControl.get('email')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Email is required</p>\r\n\r\n          } @else if (formControl.get('email')?.hasError('email') && formControl.get('email')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Email is invalid</p>\r\n          }\r\n        </div>\r\n        <div>\r\n          <label for=\"role\" class=\"block text-sm font-medium leading-6 text-gray-600\">\r\n            Role\r\n          </label>\r\n          <div class=\"mt-2\">\r\n            <select id=\"role\" name=\"role\" formControlName=\"role\" class=\"flex-1 relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\">\r\n              <option value=\"Admin\">\r\n                Administrador\r\n              </option>\r\n              <option value=\"Client\">\r\n                Cliente\r\n              </option>\r\n            </select>\r\n          </div>\r\n          @if(formControl.get('role')?.hasError('pattern') && formControl.get('role')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">\r\n              Role is Admin or User\r\n            </p>\r\n\r\n          }\r\n        </div>\r\n\r\n        <div>\r\n          <label for=\"password\" class=\"block text-sm font-medium leading-6 text-gray-600\">\r\n            Password\r\n          </label>\r\n          <div class=\"flex mt-2 relative\">\r\n            <input id=\"password\" name=\"password\" [type]=\"showPassword? 'text' : 'password'\"  formControlName=\"password\" required class=\"flex-1 relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\">\r\n            <button type=\"button\" class=\"block rounded-md border px-2.5 py-1.5 shadow-sm transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\" (click)=\"showPassword = !showPassword\" >\r\n              @if(showPassword){\r\n                <svg class=\"w-6 h-6 text-gray-600\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n                  <path stroke=\"currentColor\" stroke-width=\"2\" d=\"M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z\"/>\r\n                  <path stroke=\"currentColor\" stroke-width=\"2\" d=\"M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z\"/>\r\n                </svg>\r\n              }@else{\r\n                <svg class=\"w-6 h-6 text-gray-600\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n                  <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z\"/>\r\n                </svg>\r\n              }\r\n            </button>\r\n          </div>\r\n          @if(formControl.get('password')?.hasError('required') && formControl.get('password')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Password is required</p>\r\n\r\n          } @else if (formControl.get('password')?.hasError('minlength') && formControl.get('password')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Password must be at least 8 characters</p>\r\n          } @else if (formControl.get('password')?.hasError('pattern') && formControl.get('password')?.touched){\r\n            <ul class=\"text-red-500 text-xs mt-1 list-disc pl-5\">\r\n              <li >La contraceña debe tener 8 caracteres de longitud</li>\r\n              <li >La contraceña debe tener una letra minúscula</li>\r\n              <li >La contraceña debe tener una letra mayúscula</li>\r\n              <li >La contraceña debe tener un dígito</li>\r\n              <li >La contraceña debe tener un carácter especial (por ejemplo, &#64;, #, !, etc.)</li>\r\n            </ul>\r\n          }\r\n        </div>\r\n\r\n        <div class=\"grid grid-cols-1 gap-5\">\r\n          <a routerLink=\"/\" class=\"hover:text-sky-600 block text-sm font-medium leading-6 text-gray-600 text-right\">\r\n            Forgot your password?\r\n          </a>\r\n          <button type=\"submit\"\r\n                  class=\"flex w-full justify-center text-sm font-semibold leading-6 shadow-sm px-5 py-2 h-fit rounded-md border disabled:border-gray-300 disabled:dark:border-gray-800 text-gray-600 dark:text-gray-50 disabled:bg-slate-800/25 disabled:text-gray-50/25 border-blue-600\"\r\n                  [disabled]=\"!formControl.valid\">\r\n            Iniciar Sesión\r\n          </button>\r\n          <p class=\"block text-sm font-medium leading-6 text-gray-600 text-center\">\r\n            o iniciar sesión con\r\n          </p>\r\n          <app-buttons />\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</app-container>\r\n"
         },
         {
             "name": "MainComponent",
-            "id": "component-MainComponent-a2a4fde701c4d46bf88ed75f9dca4bbea54bb33230fbd319e5377b91314c9f45848a88425a9e08598303e9be584a793b1ce2ba25f733510aecb19204494ed1c3",
+            "id": "component-MainComponent-62b2da2d5d9ecc2d006b66495999b02768cbe7c946baaa73135e36af2afe84710e542720628c5127b0e8b473ae816282b01b58864d79e347cc917cd8598194b7",
+            "file": "src/app/pages/admin/main/main.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-main",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./main.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "authState",
+                    "defaultValue": "inject(AuthServiceService).authState",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                },
+                {
+                    "name": "db",
+                    "defaultValue": "inject(DatabaseServiceService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {DatabaseServiceService} from \"@app/core/services/database/database.service.service\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\n\r\n@Component({\r\n  selector: 'app-main',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './main.component.html',\r\n})\r\nexport class MainComponent {\r\n  private readonly authState = inject(AuthServiceService).authState\r\n  private readonly db = inject(DatabaseServiceService)\r\n\r\n\r\n  ngOnInit() {\r\n    this.authState.subscribe(user =>{\r\n      if (user) {\r\n        /*const email = user.email as string\r\n        this.db.getUserByEmail(email).then(user => {\r\n          console.log(user)\r\n        })*/\r\n      }\r\n    })\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"relative\">\r\n  <div class=\"absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n  <div class=\"mx-auto max-w-2xl py-32 sm:py-48 lg:py-56\">\r\n    <div class=\"hidden sm:mb-8 sm:flex sm:justify-center\">\r\n      <div class=\"relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-slate-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20\">\r\n        Announcing our next round of funding. <a href=\"#\" class=\"font-semibold text-indigo-600\"><span class=\"absolute inset-0\" aria-hidden=\"true\"></span>Read more <span aria-hidden=\"true\">&rarr;</span></a>\r\n      </div>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <h1 class=\"text-4xl font-bold tracking-tight text-gray-900 dark:text-slate-500 sm:text-6xl\">Data to enrich your online business</h1>\r\n      <p class=\"mt-6 text-lg leading-8 text-gray-600\">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>\r\n      <div class=\"mt-10 flex items-center justify-evenly gap-x-6\">\r\n        <a href=\"#\" class=\"rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600\">Get started</a>\r\n        <a href=\"#\" class=\"text-sm font-semibold leading-6 text-gray-900 dark:text-slate-500\">Learn more <span aria-hidden=\"true\">→</span></a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n\r\n</div>\r\n"
+        },
+        {
+            "name": "MainComponent",
+            "id": "component-MainComponent-a2a4fde701c4d46bf88ed75f9dca4bbea54bb33230fbd319e5377b91314c9f45848a88425a9e08598303e9be584a793b1ce2ba25f733510aecb19204494ed1c3-1",
             "file": "src/app/pages/client/main/main.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2432,87 +2804,10 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div #scrollContainer  class=\"relative h-screen flex flex-col gap-6 snap-y snap-mandatory overflow-y-scroll\">\r\n  @for(prop of moviesData; track $index){\r\n    <app-hero\r\n      class=\"snap-center shrink-0\"\r\n      [Props]=\"prop\"\r\n    ></app-hero>\r\n  }\r\n</div>\r\n<div>\r\n  <h1>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n  </h1>\r\n</div>\r\n"
-        },
-        {
-            "name": "MainComponent",
-            "id": "component-MainComponent-62b2da2d5d9ecc2d006b66495999b02768cbe7c946baaa73135e36af2afe84710e542720628c5127b0e8b473ae816282b01b58864d79e347cc917cd8598194b7-1",
-            "file": "src/app/pages/admin/main/main.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-main",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./main.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "authState",
-                    "defaultValue": "inject(AuthServiceService).authState",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
-                    "name": "db",
-                    "defaultValue": "inject(DatabaseServiceService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 13,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 16,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {DatabaseServiceService} from \"@app/core/services/database/database.service.service\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\n\r\n@Component({\r\n  selector: 'app-main',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './main.component.html',\r\n})\r\nexport class MainComponent {\r\n  private readonly authState = inject(AuthServiceService).authState\r\n  private readonly db = inject(DatabaseServiceService)\r\n\r\n\r\n  ngOnInit() {\r\n    this.authState.subscribe(user =>{\r\n      if (user) {\r\n        /*const email = user.email as string\r\n        this.db.getUserByEmail(email).then(user => {\r\n          console.log(user)\r\n        })*/\r\n      }\r\n    })\r\n  }\r\n\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "MainComponent-1",
-            "templateData": "<div class=\"relative\">\r\n  <div class=\"absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n  <div class=\"mx-auto max-w-2xl py-32 sm:py-48 lg:py-56\">\r\n    <div class=\"hidden sm:mb-8 sm:flex sm:justify-center\">\r\n      <div class=\"relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-slate-500 ring-1 ring-gray-900/10 hover:ring-gray-900/20\">\r\n        Announcing our next round of funding. <a href=\"#\" class=\"font-semibold text-indigo-600\"><span class=\"absolute inset-0\" aria-hidden=\"true\"></span>Read more <span aria-hidden=\"true\">&rarr;</span></a>\r\n      </div>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <h1 class=\"text-4xl font-bold tracking-tight text-gray-900 dark:text-slate-500 sm:text-6xl\">Data to enrich your online business</h1>\r\n      <p class=\"mt-6 text-lg leading-8 text-gray-600\">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>\r\n      <div class=\"mt-10 flex items-center justify-evenly gap-x-6\">\r\n        <a href=\"#\" class=\"rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600\">Get started</a>\r\n        <a href=\"#\" class=\"text-sm font-semibold leading-6 text-gray-900 dark:text-slate-500\">Learn more <span aria-hidden=\"true\">→</span></a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl\" aria-hidden=\"true\">\r\n    <div class=\"relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]\" style=\"clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)\"></div>\r\n  </div>\r\n\r\n</div>\r\n"
+            "templateData": "<div #scrollContainer  class=\"relative h-screen flex flex-col gap-6 snap-y snap-mandatory overflow-y-scroll\">\r\n  @for(prop of moviesData; track $index){\r\n    <app-hero\r\n      class=\"snap-center shrink-0\"\r\n      [Props]=\"prop\"\r\n    ></app-hero>\r\n  }\r\n</div>\r\n<div>\r\n  <h1>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n    <app-button [buttonProps]=\"{text: 'Load More', icon: '', variant: 'primary'}\"></app-button>\r\n  </h1>\r\n</div>\r\n"
         },
         {
             "name": "NavBarComponent",
@@ -3009,45 +3304,7 @@
         },
         {
             "name": "ProfileComponent",
-            "id": "component-ProfileComponent-a97249ba5e5c3bb4a8c44264a928e23d63a6aa67c7adf52f7420157aff9fb5bcd3f3bced05a28cc454120fc85ee8b54060f753c396a535ab33dcd13d548690b0",
-            "file": "src/app/pages/components/profile/profile.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-profile",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./profile.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-profile',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './profile.component.html',\r\n  styleUrl: './profile.component.scss'\r\n})\r\nexport class ProfileComponent {\r\n\r\n}\r\n",
-            "styleUrl": "./profile.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<p>profile works!</p>\r\n"
-        },
-        {
-            "name": "ProfileComponent",
-            "id": "component-ProfileComponent-9b4b892b8f19870c5742532df240e6fbc4908a964df7d7ff276344e2b575e2b3c52777679f6d7d7129cb28682e8a8d7b6891264d38de0e51294b5b1d4cf0252d-1",
+            "id": "component-ProfileComponent-9b4b892b8f19870c5742532df240e6fbc4908a964df7d7ff276344e2b575e2b3c52777679f6d7d7129cb28682e8a8d7b6891264d38de0e51294b5b1d4cf0252d",
             "file": "src/app/pages/admin/profile/profile.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3118,14 +3375,52 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "ProfileComponent-1",
             "templateData": "<div class=\"grid grid-cols-1 gap-10\">\r\n  <div class=\"xl:w-[20%] md:w-[50%] sm:w-[70%] w-full mx-auto flex justify-center items-center relative\">\r\n    <img class=\"w-full h-auto border-l-8 border-r-8 border-indigo-700 rounded-full shadow-2xl shadow-blue-700\" [src]=\"userInstance?.getPhotoURL\" [alt]=\"userInstance?.getDisplayName\">\r\n    <div class=\"rounded-full absolute right-0 bottom-0 bg-slate-800/65 flex justify-center items-center border-2 border-indigo-700\">\r\n      @switch (userInstance?.getProviderId){\r\n        @case('google.com'){\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewBox=\"0 0 64 64\" width=\"100\" height=\"100\">\r\n            <linearGradient id=\"Pl9x765sEya2T~V8LKMRTa_48166_gr1\" x1=\"32\" x2=\"32\" y1=\"4.75\" y2=\"60.568\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#Pl9x765sEya2T~V8LKMRTa_48166_gr1)\" d=\"M32.51,58c-10.073,0-19.149-5.485-23.687-14.315C6.976,40.075,6,36.035,6,32 s0.976-8.075,2.823-11.684C13.361,11.485,22.437,6,32.51,6c6.756,0,12.891,2.342,17.743,6.772l0.781,0.713l-8.756,8.58l-0.699-0.655 c-2.423-2.27-5.559-3.469-9.068-3.469c-6.017,0-11.373,3.868-13.328,9.626c-0.496,1.457-0.747,2.945-0.747,4.425 c0,1.477,0.251,2.964,0.747,4.42c1.952,5.75,7.308,9.613,13.328,9.613c3.048,0,5.845-0.779,8.09-2.253 c2.058-1.351,3.6-3.412,4.352-5.772H31V26h26.396l0.128,0.851C57.81,28.74,58,30.397,58,32.341c0,7.856-2.818,14.727-7.937,19.345 C45.498,55.816,39.428,58,32.51,58z M32.51,8c-9.32,0-17.715,5.069-21.907,13.229C8.876,24.604,8,28.228,8,32 s0.876,7.396,2.604,10.771C14.795,50.931,23.19,56,32.51,56c6.414,0,12.02-2.005,16.212-5.798C53.416,45.967,56,39.624,56,32.341 c0-1.527-0.127-2.88-0.329-4.341H33v8h14.456l-0.235,1.193c-0.666,3.377-2.678,6.384-5.522,8.251 c-2.571,1.688-5.748,2.581-9.188,2.581c-6.876,0-12.994-4.408-15.221-10.97c-0.566-1.663-0.853-3.367-0.853-5.063 c0-1.699,0.287-3.404,0.853-5.068c2.23-6.568,8.347-10.982,15.221-10.982c3.689,0,7.027,1.164,9.714,3.376l5.883-5.765 C43.763,9.916,38.394,8,32.51,8z\"></path><linearGradient id=\"Pl9x765sEya2T~V8LKMRTb_48166_gr2\" x1=\"32\" x2=\"32\" y1=\"10.75\" y2=\"55.408\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Pl9x765sEya2T~V8LKMRTb_48166_gr2)\" d=\"M32,53c-11.58,0-21-9.421-21-21s9.42-21,21-21c3.924,0,7.75,1.089,11.067,3.149l-1.056,1.699 C39.012,13.985,35.55,13,32,13c-10.477,0-19,8.523-19,19s8.523,19,19,19c10.141,0,18.452-7.986,18.974-18H36v-2h17v1 C53,43.579,43.58,53,32,53z\"></path>\r\n          </svg>\r\n        }\r\n        @case('github.com'){\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewBox=\"0 0 64 64\">\r\n            <linearGradient id=\"KpzH_ttTMIjq8dhx1zD2pa_52539_gr1\" x1=\"30.999\" x2=\"30.999\" y1=\"16\" y2=\"55.342\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#KpzH_ttTMIjq8dhx1zD2pa_52539_gr1)\" d=\"M25.008,56.007c-0.003-0.368-0.006-1.962-0.009-3.454l-0.003-1.55 c-6.729,0.915-8.358-3.78-8.376-3.83c-0.934-2.368-2.211-3.045-2.266-3.073l-0.124-0.072c-0.463-0.316-1.691-1.157-1.342-2.263 c0.315-0.997,1.536-1.1,2.091-1.082c3.074,0.215,4.63,2.978,4.694,3.095c1.569,2.689,3.964,2.411,5.509,1.844 c0.144-0.688,0.367-1.32,0.659-1.878C20.885,42.865,15.27,40.229,15.27,30.64c0-2.633,0.82-4.96,2.441-6.929 c-0.362-1.206-0.774-3.666,0.446-6.765l0.174-0.442l0.452-0.144c0.416-0.137,2.688-0.624,7.359,2.433 c1.928-0.494,3.969-0.749,6.074-0.759c2.115,0.01,4.158,0.265,6.09,0.759c4.667-3.058,6.934-2.565,7.351-2.433l0.451,0.145 l0.174,0.44c1.225,3.098,0.813,5.559,0.451,6.766c1.618,1.963,2.438,4.291,2.438,6.929c0,9.591-5.621,12.219-10.588,13.087 c0.563,1.065,0.868,2.402,0.868,3.878c0,1.683-0.007,7.204-0.015,8.402l-2-0.014c0.008-1.196,0.015-6.708,0.015-8.389 c0-2.442-0.943-3.522-1.35-3.874l-1.73-1.497l2.274-0.253c5.205-0.578,10.525-2.379,10.525-11.341c0-2.33-0.777-4.361-2.31-6.036 l-0.43-0.469l0.242-0.587c0.166-0.401,0.894-2.442-0.043-5.291c-0.758,0.045-2.568,0.402-5.584,2.447l-0.384,0.259l-0.445-0.123 c-1.863-0.518-3.938-0.796-6.001-0.806c-2.052,0.01-4.124,0.288-5.984,0.806l-0.445,0.123l-0.383-0.259 c-3.019-2.044-4.833-2.404-5.594-2.449c-0.935,2.851-0.206,4.892-0.04,5.293l0.242,0.587l-0.429,0.469 c-1.536,1.681-2.314,3.712-2.314,6.036c0,8.958,5.31,10.77,10.504,11.361l2.252,0.256l-1.708,1.49 c-0.372,0.325-1.03,1.112-1.254,2.727l-0.075,0.549l-0.506,0.227c-1.321,0.592-5.839,2.162-8.548-2.485 c-0.015-0.025-0.544-0.945-1.502-1.557c0.646,0.639,1.433,1.673,2.068,3.287c0.066,0.19,1.357,3.622,7.28,2.339l1.206-0.262 l0.012,3.978c0.003,1.487,0.006,3.076,0.009,3.444L25.008,56.007z\"></path><linearGradient id=\"KpzH_ttTMIjq8dhx1zD2pb_52539_gr2\" x1=\"32\" x2=\"32\" y1=\"5\" y2=\"59.167\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#KpzH_ttTMIjq8dhx1zD2pb_52539_gr2)\" d=\"M32,58C17.663,58,6,46.337,6,32S17.663,6,32,6s26,11.663,26,26S46.337,58,32,58z M32,8 C18.767,8,8,18.767,8,32s10.767,24,24,24s24-10.767,24-24S45.233,8,32,8z\"></path>\r\n          </svg>\r\n        }\r\n        @default {\r\n          <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewBox=\"0 0 64 64\">\r\n            <linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5a_44033_gr1\" x1=\"36\" x2=\"36\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5a_44033_gr1)\" d=\"M36 40A2 2 0 1 0 36 44A2 2 0 1 0 36 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5b_44033_gr2\" x1=\"42\" x2=\"42\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5b_44033_gr2)\" d=\"M42 40A2 2 0 1 0 42 44A2 2 0 1 0 42 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5c_44033_gr3\" x1=\"48\" x2=\"48\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5c_44033_gr3)\" d=\"M48 40A2 2 0 1 0 48 44A2 2 0 1 0 48 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5d_44033_gr4\" x1=\"30\" x2=\"30\" y1=\"39.833\" y2=\"44.179\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5d_44033_gr4)\" d=\"M30 40A2 2 0 1 0 30 44A2 2 0 1 0 30 40Z\"></path><linearGradient id=\"Tz2XUOsfxgFw8DN_AXgE5e_44033_gr5\" x1=\"32\" x2=\"32\" y1=\"5.333\" y2=\"58.804\" gradientUnits=\"userSpaceOnUse\" spreadMethod=\"reflect\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#Tz2XUOsfxgFw8DN_AXgE5e_44033_gr5)\" d=\"M52.021,34H47v-3c0-2.757-2.243-5-5-5h-1v-2c0-1.103-0.897-2-2-2h-2v-7c0-4.963-4.037-9-9-9 s-9,4.037-9,9v7h-2c-1.103,0-2,0.897-2,2v2h-1c-2.757,0-5,2.243-5,5v22c0,2.757,2.243,5,5,5h28c2.757,0,5-2.243,5-5v-3h5.021 C53.663,50,55,48.663,55,47.021V36.979C55,35.337,53.663,34,52.021,34z M39,26h-6v-2h6V26z M21,15c0-3.859,3.141-7,7-7s7,3.141,7,7 v7h-2c-1.103,0-2,0.897-2,2v2h-6v-2c0-1.103-0.897-2-2-2h-2V15z M17,24h6v2h-6V24z M45,53c0,1.654-1.346,3-3,3h-7 c0-1.103-0.897-2-2-2H23c-1.103,0-2,0.897-2,2h-7c-1.654,0-3-1.346-3-3v-4h4v-2h-4v-2h4v-2h-4v-2h4v-2h-4v-2h4v-2h-4v-4 c0-1.654,1.346-3,3-3h28c1.654,0,3,1.346,3,3v3H25.979C24.337,34,23,35.337,23,36.979v10.041C23,48.663,24.337,50,25.979,50H45V53z M53,47.021C53,47.561,52.561,48,52.021,48H25.979C25.439,48,25,47.561,25,47.021V36.979C25,36.439,25.439,36,25.979,36h26.041 C52.561,36,53,36.439,53,36.979V47.021z\"></path>\r\n          </svg>\r\n        }\r\n      }\r\n    </div>\r\n  </div>\r\n  <div class=\"xl:w-[40%] md:w-[60%] sm:w-[80%] w-full mx-auto divide-y flex flex-col border border-indigo-700 rounded-xl shadow-2xl shadow-blue-700 text-slate-600 divide-slate-600\">\r\n    <div class=\"py-5 px-5 w-full flex sm:flex-row flex-col justify-between\">\r\n      <h3>Name</h3>\r\n      <p>{{userInstance?.getDisplayName}}</p>\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Email</h3>\r\n      <div class=\"flex items-center\">\r\n        <p>{{userInstance?.getEmail}}</p>\r\n        @if (userInstance?.getEmailVerified){\r\n          <svg class=\"text-green-700\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n            <path fill-rule=\"evenodd\" d=\"M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z\" clip-rule=\"evenodd\"/>\r\n          </svg>\r\n        } @else {\r\n          <svg class=\"text-red-700\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n            <path fill-rule=\"evenodd\" d=\"M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z\" clip-rule=\"evenodd\"/>\r\n          </svg>\r\n        }\r\n      </div>\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Phone</h3>\r\n      @if (userInstance?.getPhoneNumber){\r\n        <p>{{userInstance?.getPhoneNumber}}</p>\r\n      } @else {\r\n        <p>Not available</p>\r\n      }\r\n    </div>\r\n    <div class=\"py-5 px-5 flex sm:flex-row flex-col justify-between\">\r\n      <h3>Provider</h3>\r\n      <p>{{userInstance?.getProviderId}}</p>\r\n    </div>\r\n\r\n  </div>\r\n</div>\r\n"
         },
         {
+            "name": "ProfileComponent",
+            "id": "component-ProfileComponent-a97249ba5e5c3bb4a8c44264a928e23d63a6aa67c7adf52f7420157aff9fb5bcd3f3bced05a28cc454120fc85ee8b54060f753c396a535ab33dcd13d548690b0-1",
+            "file": "src/app/pages/components/profile/profile.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-profile",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./profile.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-profile',\r\n  standalone: true,\r\n  imports: [],\r\n  templateUrl: './profile.component.html',\r\n  styleUrl: './profile.component.scss'\r\n})\r\nexport class ProfileComponent {\r\n\r\n}\r\n",
+            "styleUrl": "./profile.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "ProfileComponent-1",
+            "templateData": "<p>profile works!</p>\r\n"
+        },
+        {
             "name": "RegisterComponent",
-            "id": "component-RegisterComponent-2f370d8255d52d98a3f733a38d36d1e0d9d62747c61742f8d613ab5a841b552be4cd6e6681ac6cc0e7ecd2e8c481bcc281770a24765997c95a7f3c94d3353d1c",
+            "id": "component-RegisterComponent-d12911fda4376f37d5a3afa8e03b7b0ffe7cf34262ab87a54af07e233c19ca0678100ab1ccf6660c82cae9e8b7d3383aac14cf94285368fd725b861f98305451",
             "file": "src/app/components/Auth/register/register.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3143,20 +3438,6 @@
             "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [
-                {
-                    "name": "auth",
-                    "defaultValue": "inject(AuthServiceService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 27,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
                 {
                     "name": "form",
                     "deprecated": false,
@@ -3177,21 +3458,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 32
-                },
-                {
-                    "name": "router",
-                    "defaultValue": "inject(Router)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Router",
-                    "optional": false,
-                    "description": "",
-                    "line": 28,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
+                    "line": 33
                 },
                 {
                     "name": "showPassword",
@@ -3201,7 +3468,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 32
                 }
             ],
             "methodsClass": [
@@ -3211,7 +3478,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 59,
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -3248,7 +3515,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {ButtonsComponent} from \"../components/buttons/buttons.component\";\r\nimport {ContainerComponent} from \"../components/container/container.component\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {FormDto, UserDto} from \"@/types\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\nimport Swal from \"sweetalert2\";\r\n\r\n\r\n\r\n@Component({\r\n  selector: 'app-sign-up',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonsComponent,\r\n    ContainerComponent,\r\n    RouterLink,\r\n    FormsModule,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './register.component.html',\r\n  styleUrl: './register.component.scss'\r\n})\r\nexport class RegisterComponent {\r\n\r\n  private readonly auth = inject(AuthServiceService)\r\n  private readonly router: Router = inject(Router)\r\n\r\n  protected form: FormGroup<FormDto>;\r\n  showPassword: boolean = false;\r\n  isAuthenticated: boolean = false;\r\n  constructor() {\r\n    this.form = new FormGroup<FormDto>({\r\n      name: new FormControl('alguien test', [\r\n        Validators.required,\r\n        Validators.minLength(4)\r\n      ]),\r\n      lastName: new FormControl('lasts test', [\r\n        Validators.required,\r\n        Validators.minLength(4)\r\n      ]),\r\n      email: new FormControl('cademi4911@jadsys.com', [\r\n        Validators.required,\r\n        Validators.email\r\n      ]),\r\n      role: new FormControl<\"Admin\" | \"Client\">('Client', [\r\n        Validators.required,\r\n        Validators.pattern(/Admin|Client/)\r\n      ]),\r\n      password: new FormControl('n8pnU9xrVAjJz*', [\r\n        Validators.required,\r\n        Validators.minLength(8),\r\n        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/)\r\n      ])\r\n    })\r\n  }\r\n\r\n  async submit(){\r\n    /*\r\n    aPgyc#P7@N2Lh5 -> cademi4911@jadsys.com\r\n    n8pnU9xrVAjJz*\r\n    T#uqP#tA7AA&Mf\r\n     */\r\n    if (!this.form.valid) return\r\n    try {\r\n\r\n\r\n    }catch (e){\r\n      if (e instanceof Error) {\r\n        alert(`Error if ${e.message}`)\r\n        console.error(e.message)\r\n      }else {\r\n        alert(`Error else ${e}`)\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {ButtonsComponent} from \"../components/buttons/buttons.component\";\r\nimport {ContainerComponent} from \"../components/container/container.component\";\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from \"@angular/forms\";\r\nimport {FormDto, UserDto} from \"@/types\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\n\r\n\r\n\r\n\r\n@Component({\r\n  selector: 'app-sign-up',\r\n  standalone: true,\r\n  imports: [\r\n    ButtonsComponent,\r\n    ContainerComponent,\r\n    RouterLink,\r\n    FormsModule,\r\n    ReactiveFormsModule\r\n  ],\r\n  templateUrl: './register.component.html',\r\n  styleUrl: './register.component.scss'\r\n})\r\nexport class RegisterComponent {\r\n\r\n  //private readonly auth = inject(AuthServiceService)\r\n  //private readonly router: Router = inject(Router)\r\n\r\n  protected form: FormGroup<FormDto>;\r\n\r\n  showPassword: boolean = false;\r\n  isAuthenticated: boolean = false;\r\n  constructor() {\r\n    this.form = new FormGroup<FormDto>({\r\n      name: new FormControl('alguien test', [\r\n        Validators.required,\r\n        Validators.minLength(4)\r\n      ]),\r\n      lastName: new FormControl('lasts test', [\r\n        Validators.required,\r\n        Validators.minLength(4)\r\n      ]),\r\n      email: new FormControl('cademi4911@jadsys.com', [\r\n        Validators.required,\r\n        Validators.email\r\n      ]),\r\n      role: new FormControl<\"Admin\" | \"Client\">('Client', [\r\n        Validators.required,\r\n        Validators.pattern(/Admin|Client/)\r\n      ]),\r\n      password: new FormControl('n8pnU9xrVAjJz*', [\r\n        Validators.required,\r\n        Validators.minLength(8),\r\n        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/)\r\n      ])\r\n    })\r\n  }\r\n\r\n  async submit(){\r\n    /*\r\n    aPgyc#P7@N2Lh5 -> cademi4911@jadsys.com\r\n    n8pnU9xrVAjJz*\r\n    T#uqP#tA7AA&Mf\r\n     */\r\n    if (!this.form.valid) return\r\n    try {\r\n\r\n\r\n    }catch (e){\r\n      if (e instanceof Error) {\r\n        alert(`Error if ${e.message}`)\r\n        console.error(e.message)\r\n      }else {\r\n        alert(`Error else ${e}`)\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n",
             "styleUrl": "./register.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3259,7 +3526,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 32
+                "line": 33
             },
             "extends": [],
             "templateData": "<app-container>\r\n  <div class=\"flex min-h-full flex-col justify-center px-6 py-12 lg:px-8\">\r\n    <div class=\" flex flex-col justify-center items-center\">\r\n      <svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"100\" height=\"100\" viewBox=\"0 0 64 64\">\r\n        <linearGradient id=\"SVGID_1__dSnah6CSCxRG_gr1\" x1=\"32\" x2=\"32\" y1=\"6.872\" y2=\"50.533\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#SVGID_1__dSnah6CSCxRG_gr1)\" d=\"M55.9,14.2L32.2,6.1C32,6,31.8,6,31.6,6.1L8.1,14.3c-0.4,0.2-0.7,0.6-0.7,1.1l3.7,30.8c0,0.3,0.2,0.6,0.5,0.8 l19.8,10.9c0.1,0.1,0.3,0.1,0.5,0.1c0.2,0,0.3,0,0.5-0.1l19.9-11c0.3-0.2,0.5-0.4,0.5-0.8l3.7-30.8C56.6,14.8,56.4,14.3,55.9,14.2z M51,45.3l-19,10.5L13,45.5L9.5,16l22.4-7.9l22.6,7.8L51,45.3z\"></path><linearGradient id=\"SVGID_2__dSnah6CSCxRG_gr2\" x1=\"31.999\" x2=\"31.999\" y1=\"6.872\" y2=\"50.533\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stop-color=\"#1a6dff\"></stop><stop offset=\"1\" stop-color=\"#c822ff\"></stop></linearGradient><path fill=\"url(#SVGID_2__dSnah6CSCxRG_gr2)\" d=\"M12.4,17c-0.4,0.2-0.7,0.6-0.7,1.1l3.1,25.6c0,0.3,0.2,0.6,0.5,0.8l16.1,8.8c0.1,0.1,0.3,0.1,0.5,0.1 c0.2,0,0.3,0,0.5-0.1l16.2-9c0.3-0.2,0.5-0.4,0.5-0.8L52.2,18c0.1-0.5-0.2-0.9-0.7-1.1l-19.3-6.6c-0.2-0.1-0.4-0.1-0.7,0L12.4,17z M31.9,12.3l18.2,6.3l-2.9,24.3l-15.3,8.5L16.8,43l-2.9-24.3L31.9,12.3z\"></path><linearGradient id=\"SVGID_3__dSnah6CSCxRG_gr3\" x1=\"32.255\" x2=\"32.255\" y1=\"14.915\" y2=\"40.065\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stop-color=\"#6dc7ff\"></stop><stop offset=\"1\" stop-color=\"#e6abff\"></stop></linearGradient><path fill=\"url(#SVGID_3__dSnah6CSCxRG_gr3)\" d=\"M31.9,14.2L31.9,14.2L31.9,14.2L31.9,14.2L31.9,14.2L20,41h4.4l2.4-6h10.9l2.6,6h4.4L31.9,14.2z M32,22.4\tl4.1,8.6l-7.7,0L32,22.4z\"></path>\r\n      </svg>\r\n      <div class=\"w-full px-6 py-4 border-b border-gray-200 dark:border-gray-800\">\r\n        <h2 class=\"text-2xl text-center font-semibold leading-6 text-gray-900 dark:text-gray-50\">\r\n          Create a new account\r\n        </h2>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"mt-10\">\r\n      <form class=\"space-y-6\" autocomplete=\"off\" [formGroup]=\"form\" (ngSubmit)=\"submit()\">\r\n        <div>\r\n          <label for=\"email\" class=\"block text-sm font-medium leading-6 text-gray-600\">\r\n            Name\r\n          </label>\r\n          <div class=\"mt-2\">\r\n            <input formControlName=\"name\" id=\"name\" name=\"name\" type=\"text\" required class=\"flex-1 relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\">\r\n          </div>\r\n          @if(form.get('name')?.hasError('required') && form.get('name')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Name is required</p>\r\n\r\n          } @else if (form.get('name')?.hasError('minlength') && form.get('name')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Name must be at least 4 characters</p>\r\n          }\r\n        </div>\r\n\r\n        <div>\r\n          <label for=\"email\" class=\"block text-sm font-medium leading-6 text-gray-600\">\r\n            Last Name\r\n          </label>\r\n          <div class=\"mt-2\">\r\n            <input formControlName=\"lastName\" id=\"lastName\" name=\"lastName\" type=\"text\" required class=\"flex-1 relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\">\r\n          </div>\r\n          @if(form.get('lastName')?.hasError('required') && form.get('lastName')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Last Name is required</p>\r\n\r\n          } @else if (form.get('lastName')?.hasError('minlength') && form.get('lastName')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Last Name must be at least 4 characters</p>\r\n          }\r\n        </div>\r\n\r\n        <div>\r\n          <label for=\"email\" class=\"block text-sm font-medium leading-6 text-gray-600\">\r\n            Email\r\n          </label>\r\n          <div class=\"mt-2\">\r\n            <input id=\"email\" name=\"email\" formControlName=\"email\" type=\"email\" required class=\"flex-1 relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\">\r\n          </div>\r\n          @if(form.get('email')?.hasError('required') && form.get('email')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Email is required</p>\r\n\r\n          } @else if (form.get('email')?.hasError('email') && form.get('email')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Email is invalid</p>\r\n          }\r\n        </div>\r\n\r\n        <div>\r\n          <label for=\"role\" class=\"block text-sm font-medium leading-6 text-gray-600\">\r\n            Role\r\n          </label>\r\n          <div class=\"mt-2\">\r\n            <select id=\"role\" name=\"role\" formControlName=\"role\" class=\"flex-1 relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\">\r\n              <option value=\"Admin\">\r\n                Administrador\r\n              </option>\r\n              <option value=\"Client\">\r\n                Cliente\r\n              </option>\r\n            </select>\r\n          </div>\r\n          @if(form.get('role')?.hasError('pattern') && form.get('role')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">\r\n              Role is Admin or User\r\n            </p>\r\n\r\n          }\r\n        </div>\r\n\r\n        <div>\r\n          <label for=\"password\" class=\"block text-sm font-medium leading-6 text-gray-600\">\r\n            Password\r\n          </label>\r\n          <div class=\"flex mt-2 relative\">\r\n            <input id=\"password\" name=\"password\" [type]=\"showPassword? 'text' : 'password'\"  formControlName=\"password\" required class=\"flex-1 relative block w-full appearance-none rounded-md border px-2.5 py-1.5 shadow-sm outline-none transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\">\r\n            <button type=\"button\" class=\"block rounded-md border px-2.5 py-1.5 shadow-sm transition sm:text-sm border-gray-300 dark:border-gray-800 text-gray-600 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-950\" (click)=\"showPassword = !showPassword\" >\r\n              @if(showPassword){\r\n                <svg class=\"w-6 h-6 text-gray-600\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n                  <path stroke=\"currentColor\" stroke-width=\"2\" d=\"M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z\"/>\r\n                  <path stroke=\"currentColor\" stroke-width=\"2\" d=\"M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z\"/>\r\n                </svg>\r\n              }@else{\r\n                <svg class=\"w-6 h-6 text-gray-600\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n                  <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3.933 13.909A4.357 4.357 0 0 1 3 12c0-1 4-6 9-6m7.6 3.8A5.068 5.068 0 0 1 21 12c0 1-3 6-9 6-.314 0-.62-.014-.918-.04M5 19 19 5m-4 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z\"/>\r\n                </svg>\r\n              }\r\n            </button>\r\n          </div>\r\n          @if(form.get('password')?.hasError('required') && form.get('password')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Password is required</p>\r\n\r\n          } @else if (form.get('password')?.hasError('minlength') && form.get('password')?.touched){\r\n            <p class=\"text-red-500 text-xs mt-1\">Password must be at least 8 characters</p>\r\n          } @else if (form.get('password')?.hasError('pattern') && form.get('password')?.touched){\r\n            <ul class=\"text-red-500 text-xs mt-1 list-disc pl-5\">\r\n              <li >La contraceña debe tener 8 caracteres de longitud</li>\r\n              <li >La contraceña debe tener una letra minúscula</li>\r\n              <li >La contraceña debe tener una letra mayúscula</li>\r\n              <li >La contraceña debe tener un dígito</li>\r\n              <li >La contraceña debe tener un carácter especial (por ejemplo, &#64;, #, !, etc.)</li>\r\n            </ul>\r\n          }\r\n        </div>\r\n\r\n        <div class=\"grid grid-cols-1 gap-5\">\r\n          <button [disabled]=\"!form.valid\" type=\"submit\" class=\"flex w-full justify-center text-sm font-semibold leading-6 shadow-sm px-5 h-fit py-2 rounded-md border disabled:border-gray-300 disabled:dark:border-gray-800 text-gray-600 dark:text-gray-50 disabled:bg-slate-800/25 disabled:text-gray-50/25 border-blue-600\">\r\n            Create a Account\r\n          </button>\r\n          <a routerLink=\"/auth/log-in\"  class=\"flex w-full justify-evenly items-center text-sm font-semibold leading-6 shadow-sm px-5 h-fit py-1 rounded-md border disabled:border-gray-300 disabled:dark:border-gray-800 text-gray-600 dark:text-gray-50 disabled:bg-slate-800/25 disabled:text-gray-50/25 border-blue-600\">\r\n            Login\r\n          </a>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</app-container>\r\n"
@@ -3303,7 +3570,7 @@
         },
         {
             "name": "SideNavComponent",
-            "id": "component-SideNavComponent-735c4f017a11e8e7a0bc70e3afc744e3e3e0f2288574d613b225ea9cae03db07998a31da579ad13d08b70fd77340730150780e6f3464fe0068ba0ada07e18148",
+            "id": "component-SideNavComponent-bfd15779fecc2f1da0658e2d5628c9d58d71ff1554ab81b882db4f6b14dc34fc523c8e8f66584d5a8d53b41688034ae68b6a33179abb51380cb58402977139eb",
             "file": "src/app/pages/admin/components/side-nav/side-nav.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3336,7 +3603,7 @@
                 },
                 {
                     "name": "navItems",
-                    "defaultValue": "[\r\n    {\r\n      label: 'Dashboard',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard'\r\n    },\r\n    {\r\n      label: 'Storage',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/storage'\r\n    },\r\n    {\r\n      label: 'Profile',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm1.942 4a3 3 0 0 0-2.847 2.051l-.044.133-.004.012c-.042.126-.055.167-.042.195.006.013.02.023.038.039.032.025.08.064.146.155A1 1 0 0 0 6 17h6a1 1 0 0 0 .811-.415.713.713 0 0 1 .146-.155c.019-.016.031-.026.038-.04.014-.027 0-.068-.042-.194l-.004-.012-.044-.133A3 3 0 0 0 10.059 14H7.942Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard/profile'\r\n    },\r\n    {\r\n      label: 'Gallery',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/gallery'\r\n    },\r\n    {\r\n      label: 'Settings',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z\" clip-rule=\"evenodd\"/>\r\n             </svg>\r\n            `,\r\n      path: '/dashboard/settings'\r\n    },\r\n    {\r\n      label: 'Charts',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n              <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/charts'\r\n    }\r\n  ]",
+                    "defaultValue": "[\r\n    {\r\n      label: 'Dashboard',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard',\r\n    },\r\n    {\r\n      label: 'Storage',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/storage'\r\n    },\r\n    {\r\n      label: 'Profile',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm1.942 4a3 3 0 0 0-2.847 2.051l-.044.133-.004.012c-.042.126-.055.167-.042.195.006.013.02.023.038.039.032.025.08.064.146.155A1 1 0 0 0 6 17h6a1 1 0 0 0 .811-.415.713.713 0 0 1 .146-.155c.019-.016.031-.026.038-.04.014-.027 0-.068-.042-.194l-.004-.012-.044-.133A3 3 0 0 0 10.059 14H7.942Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard/profile'\r\n    },\r\n    {\r\n      label: 'Gallery',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/gallery'\r\n    },\r\n    {\r\n      label: 'Settings',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z\" clip-rule=\"evenodd\"/>\r\n             </svg>\r\n            `,\r\n      path: '/dashboard/settings'\r\n    },\r\n    {\r\n      label: 'Charts',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n              <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/charts'\r\n    }\r\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "NavItemDto[]",
@@ -3394,7 +3661,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport {NavItemsComponent} from \"./nav-items/nav-items.component\";\r\nimport {NavContainerComponent} from \"./nav-container/nav-container.component\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\nimport {NavItemDto} from \"@/types\";\r\n\r\n@Component({\r\n  selector: 'app-side-nav',\r\n  standalone: true,\r\n  imports: [\r\n    RouterLink,\r\n    NavItemsComponent,\r\n    NavContainerComponent\r\n  ],\r\n  templateUrl: './side-nav.component.html',\r\n})\r\nexport class SideNavComponent {\r\n  private _authService = inject(AuthServiceService)\r\n  private router = inject(Router)\r\n\r\n  navItems: NavItemDto[] = [\r\n    {\r\n      label: 'Dashboard',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard'\r\n    },\r\n    {\r\n      label: 'Storage',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/storage'\r\n    },\r\n    {\r\n      label: 'Profile',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm1.942 4a3 3 0 0 0-2.847 2.051l-.044.133-.004.012c-.042.126-.055.167-.042.195.006.013.02.023.038.039.032.025.08.064.146.155A1 1 0 0 0 6 17h6a1 1 0 0 0 .811-.415.713.713 0 0 1 .146-.155c.019-.016.031-.026.038-.04.014-.027 0-.068-.042-.194l-.004-.012-.044-.133A3 3 0 0 0 10.059 14H7.942Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard/profile'\r\n    },\r\n    {\r\n      label: 'Gallery',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/gallery'\r\n    },\r\n    {\r\n      label: 'Settings',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z\" clip-rule=\"evenodd\"/>\r\n             </svg>\r\n            `,\r\n      path: '/dashboard/settings'\r\n    },\r\n    {\r\n      label: 'Charts',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n              <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/charts'\r\n    }\r\n  ]\r\n\r\n  async logoutAction() {\r\n    try {\r\n\r\n    }catch (e) {\r\n      if (e instanceof Error) {\r\n        console.error(e.message)\r\n      }\r\n    }\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import {Component, inject} from '@angular/core';\r\nimport {Router, RouterLink} from \"@angular/router\";\r\nimport {NavItemsComponent} from \"./nav-items/nav-items.component\";\r\nimport {NavContainerComponent} from \"./nav-container/nav-container.component\";\r\nimport {AuthServiceService} from \"@app/core/services/auth/auth.service.service\";\r\nimport {NavItemDto} from \"@/types\";\r\n\r\n@Component({\r\n  selector: 'app-side-nav',\r\n  standalone: true,\r\n  imports: [\r\n    RouterLink,\r\n    NavItemsComponent,\r\n    NavContainerComponent\r\n  ],\r\n  templateUrl: './side-nav.component.html',\r\n})\r\nexport class SideNavComponent {\r\n  private _authService = inject(AuthServiceService)\r\n  private router = inject(Router)\r\n\r\n  navItems: NavItemDto[] = [\r\n    {\r\n      label: 'Dashboard',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard',\r\n    },\r\n    {\r\n      label: 'Storage',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/storage'\r\n    },\r\n    {\r\n      label: 'Profile',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M4 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4Zm10 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-8-5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm1.942 4a3 3 0 0 0-2.847 2.051l-.044.133-.004.012c-.042.126-.055.167-.042.195.006.013.02.023.038.039.032.025.08.064.146.155A1 1 0 0 0 6 17h6a1 1 0 0 0 .811-.415.713.713 0 0 1 .146-.155c.019-.016.031-.026.038-.04.014-.027 0-.068-.042-.194l-.004-.012-.044-.133A3 3 0 0 0 10.059 14H7.942Z\" clip-rule=\"evenodd\"/>\r\n            </svg>`,\r\n      path: '/dashboard/profile'\r\n    },\r\n    {\r\n      label: 'Gallery',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n              <path fill-rule=\"evenodd\" d=\"M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z\" clip-rule=\"evenodd\"/>\r\n              <path fill-rule=\"evenodd\" d=\"M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z\" clip-rule=\"evenodd\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/gallery'\r\n    },\r\n    {\r\n      label: 'Settings',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\r\n                <path fill-rule=\"evenodd\" d=\"M9.586 2.586A2 2 0 0 1 11 2h2a2 2 0 0 1 2 2v.089l.473.196.063-.063a2.002 2.002 0 0 1 2.828 0l1.414 1.414a2 2 0 0 1 0 2.827l-.063.064.196.473H20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-.089l-.196.473.063.063a2.002 2.002 0 0 1 0 2.828l-1.414 1.414a2 2 0 0 1-2.828 0l-.063-.063-.473.196V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.089l-.473-.196-.063.063a2.002 2.002 0 0 1-2.828 0l-1.414-1.414a2 2 0 0 1 0-2.827l.063-.064L4.089 15H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09l.195-.473-.063-.063a2 2 0 0 1 0-2.828l1.414-1.414a2 2 0 0 1 2.827 0l.064.063L9 4.089V4a2 2 0 0 1 .586-1.414ZM8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z\" clip-rule=\"evenodd\"/>\r\n             </svg>\r\n            `,\r\n      path: '/dashboard/settings'\r\n    },\r\n    {\r\n      label: 'Charts',\r\n      icon: `<svg class=\"w-6 h-6 text-gray-800 dark:text-white\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"none\" viewBox=\"0 0 24 24\">\r\n              <path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5\"/>\r\n            </svg>\r\n            `,\r\n      path: '/dashboard/charts'\r\n    }\r\n  ]\r\n\r\n  async logoutAction() {\r\n    try {\r\n\r\n    }catch (e) {\r\n      if (e instanceof Error) {\r\n        console.error(e.message)\r\n      }\r\n    }\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3915,7 +4182,7 @@
                 "linktype": "component",
                 "name": "ButtonsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -3933,7 +4200,7 @@
                 "linktype": "component",
                 "name": "LogInComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -3942,7 +4209,7 @@
                 "linktype": "component",
                 "name": "RegisterComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -4034,7 +4301,7 @@
                 "linktype": "injectable",
                 "name": "AuthServiceService",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -4043,7 +4310,16 @@
                 "linktype": "injectable",
                 "name": "DatabaseServiceService",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/storage/storage.service.service.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "FileUpload",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -4052,7 +4328,7 @@
                 "linktype": "injectable",
                 "name": "StorageServiceService",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
