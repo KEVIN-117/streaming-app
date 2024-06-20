@@ -11,6 +11,7 @@ export class DatabaseServiceService {
   private readonly dataBase: Firestore = inject(Firestore)
 
   private readonly collection$ = collection(this.dataBase, 'users');
+  private readonly collectionMovie$ = collection(this.dataBase, 'movies');
   constructor() { }
 
 
@@ -22,23 +23,35 @@ export class DatabaseServiceService {
     return await addDoc(this.collection$, data)
   }
 
+  async saveMovie(data: any){
+    return await addDoc(this.collectionMovie$, data)
+  }
+
 
   async getUser(id: string){
     try {
       let user: UserDto = {} as UserDto
-
       const q = query(this.collection$, where('id', '==', id))
-
       const querySnapshot = await getDocs(q)
-
-
       querySnapshot.forEach((doc) =>{
         user = {...doc.data() as UserDto}
       })
-
       return user
+    } catch (error) {
+      console.error(error)
+      return  {} as UserDto
+    }
+  }
 
-
+  async findUserByEmail(email: string){
+    try {
+      let user: UserDto = {} as UserDto
+      const q = query(this.collection$, where('email', '==', email))
+      const querySnapshot = await getDocs(q)
+      querySnapshot.forEach((doc) =>{
+        user = {...doc.data() as UserDto}
+      })
+      return user
     } catch (error) {
       console.error(error)
       return  {} as UserDto

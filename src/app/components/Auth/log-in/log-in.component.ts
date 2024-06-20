@@ -5,6 +5,7 @@ import {ContainerComponent} from "../components/container/container.component";
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { ReactiveFormsModule } from "@angular/forms"
 import {AuthServiceService} from "@app/core/services/auth/auth.service.service";
+import { Credentials } from '@/types';
 
 
 @Component({
@@ -21,8 +22,8 @@ import {AuthServiceService} from "@app/core/services/auth/auth.service.service";
 })
 export class LogInComponent {
 
-  //private readonly auth = inject(AuthServiceService)
-  //private readonly router = inject(Router)
+  private readonly auth = inject(AuthServiceService)
+  private readonly router = inject(Router)
 
   protected formControl;
   showPassword: boolean = false;
@@ -46,7 +47,20 @@ export class LogInComponent {
   async onSubmit() {
     if (!this.formControl.valid) return
     try {
+      const data = this.formControl.value
 
+      const user = {
+        email: data.email,
+        password: data.password,
+        role: data.role
+      } as Credentials
+      const res = await this.auth.login(user)
+      if(res.user){
+        await this.router.navigateByUrl('/dashboard')
+      }
+      else{
+        alert('Invalid credentials')
+      }
     }catch (e) {
       if (e instanceof Error) {
         console.error(e.message)

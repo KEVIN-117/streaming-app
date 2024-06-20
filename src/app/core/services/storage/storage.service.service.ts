@@ -1,5 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {ref, Storage, uploadBytesResumable} from "@angular/fire/storage";
+import {getDownloadURL, ref, Storage, uploadBytesResumable} from "@angular/fire/storage";
+import { log } from 'console';
 
 
 export class FileUpload{
@@ -24,6 +25,9 @@ export class StorageServiceService {
   async uploadFile(data: File, path: string){
     const fileUpload = new FileUpload(data)
     const bucketRef = ref(this.storage, `${path}/${fileUpload.file.name}`)
+    getDownloadURL(bucketRef).then((url)=>{
+      console.log(url);
+    })
     return uploadBytesResumable(bucketRef, fileUpload.file)
   }
 }
