@@ -10,4 +10,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'streaming-app';
+  ngOnInit(){
+    console.log(process.env["FIREBASE_API_KEY"])
+  }
 }
