@@ -48,4 +48,4 @@ Thumbs.db
 
 *storybook.log
 
-./src/environments/environment*.ts
+/enviroments
