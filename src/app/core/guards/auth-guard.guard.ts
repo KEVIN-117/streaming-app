@@ -1,7 +1,7 @@
 import {CanActivateFn, Router} from '@angular/router';
 import {inject} from "@angular/core";
 import {AuthServiceService} from "@app/core/services/auth/auth.service.service";
-import {map} from "rxjs";
+import {map, of, switchMap} from "rxjs";
 import { log } from 'console';
 import { DatabaseServiceService } from '../services/database/database.service.service';
 import { UserDto } from '@/types';
@@ -15,10 +15,31 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
   const router = routerService()
   const db = dbService()
   return authState.pipe(
-    map(user => {
+    switchMap(async user =>{
       const userEmail = user?.email
       let userDb = {} as UserDto
-      /*if (userEmail){
+      if (userEmail){
+        userDb = await db.findUserByEmail(userEmail)
+      }
+      console.log(userDb);
+      if (!user){
+        await router.navigateByUrl("/auth/log-in")
+        return false
+      }
+      if (userDb.role === "Admin"){
+        await router.navigateByUrl("/dashboard")
+        return true
+      }
+      else if (userDb.role === "Client"){
+        await router.navigateByUrl("/")
+        return true
+      }
+      return userDb.role === "Admin";
+    })
+    /*map(user => {
+      const userEmail = user?.email
+      let userDb = {} as UserDto
+      if (userEmail){
         db.findUserByEmail(userEmail).then((res: UserDto) => {
           console.log(res);
           userDb = {
@@ -32,16 +53,16 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
         }).then((res) => {
           userDb = res})
       }
-      console.log(userDb);*/
+      console.log(userDb);
 
       if (!user){
         router.navigateByUrl("/auth/log-in").then()
         return false
       }
-      /*if (userDb.role === "Admin")
-        return true*/
+      if (userDb.role === "Admin")
+        return true
       return true
-    })
+    })*/
   );
 };
 
