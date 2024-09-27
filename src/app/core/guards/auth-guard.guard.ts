@@ -15,28 +15,7 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
   const router = routerService()
   const db = dbService()
   return authState.pipe(
-    switchMap(async user =>{
-      const userEmail = user?.email
-      let userDb = {} as UserDto
-      if (userEmail){
-        userDb = await db.findUserByEmail(userEmail)
-      }
-      console.log(userDb);
-      if (!user){
-        await router.navigateByUrl("/auth/log-in")
-        return false
-      }
-      if (userDb.role === "Admin"){
-        await router.navigateByUrl("/dashboard")
-        return true
-      }
-      else if (userDb.role === "Client"){
-        await router.navigateByUrl("/")
-        return true
-      }
-      return userDb.role === "Admin";
-    })
-    /*map(user => {
+    map(user => {
       const userEmail = user?.email
       let userDb = {} as UserDto
       if (userEmail){
@@ -62,7 +41,7 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
       if (userDb.role === "Admin")
         return true
       return true
-    })*/
+    })
   );
 };
 

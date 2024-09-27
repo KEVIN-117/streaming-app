@@ -7,24 +7,15 @@ export const routes: Routes = [
   {
     path: '',
     component: ClientComponent,
+    canActivate: [publicGuard] ,
     children: [
       {
         path: '',
-        loadComponent: ()=> import('./pages/client/main/main.component').then(m => m.MainComponent)
+        loadComponent: ()=> import('../../../streaming-app/src/app/components/Auth/log-in/log-in.component').then(m => m.LogInComponent)
       },
       {
-        path: 'auth',
-        canActivate: [publicGuard] ,
-        children: [
-          {
-            path: 'log-in',
-            loadComponent: ()=> import('../../../streaming-app/src/app/components/Auth/log-in/log-in.component').then(m => m.LogInComponent)
-          },
-          {
-            path: 'sign-up',
-            loadComponent: ()=> import('../../../streaming-app/src/app/components/Auth/register/register.component').then(m => m.RegisterComponent)
-          }
-        ]
+        path: 'sign-up',
+        loadComponent: ()=> import('../../../streaming-app/src/app/components/Auth/register/register.component').then(m => m.RegisterComponent)
       }
     ]
   },
@@ -54,6 +45,10 @@ export const routes: Routes = [
         loadComponent: ()=> import('@/app/pages/admin/charts/charts.component')
       }
     ]
+  },
+  {
+    path: 'client',
+    loadComponent: ()=> import('./pages/client/main/main.component').then(m => m.MainComponent)
   },
   {
     path: "**",

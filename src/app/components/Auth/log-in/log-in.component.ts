@@ -27,6 +27,8 @@ export class LogInComponent {
 
   protected formControl;
   showPassword: boolean = false;
+
+
   constructor() {
     this.formControl = new FormGroup({
       email: new FormControl('cademi4911@jadsys.com', [
@@ -66,5 +68,10 @@ export class LogInComponent {
         console.error(e.message)
       }
     }
+  }
+
+  onchangePassword(){
+    console.log(this.showPassword)
+    this.showPassword = !this.showPassword;
   }
 }
